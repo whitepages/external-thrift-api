@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: constants</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: constants</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>constants</td><td></td>
+<td><a href="constants.html#Enum_AgeRange">AgeRange</a><br/>
+<a href="constants.html#Typedef_BusinessID">BusinessID</a><br/>
+<a href="constants.html#Typedef_ContactType">ContactType</a><br/>
+<a href="constants.html#Enum_ContactTypeE">ContactTypeE</a><br/>
+<a href="constants.html#Struct_Date">Date</a><br/>
+<a href="constants.html#Struct_Distance">Distance</a><br/>
+<a href="constants.html#Enum_DistanceUnit">DistanceUnit</a><br/>
+<a href="constants.html#Typedef_DurabilityType">DurabilityType</a><br/>
+<a href="constants.html#Enum_DurabilityTypeE">DurabilityTypeE</a><br/>
+<a href="constants.html#Struct_EntityID">EntityID</a><br/>
+<a href="constants.html#Typedef_EntityType">EntityType</a><br/>
+<a href="constants.html#Enum_EntityTypeE">EntityTypeE</a><br/>
+<a href="constants.html#Enum_Gender">Gender</a><br/>
+<a href="constants.html#Struct_LatLong">LatLong</a><br/>
+<a href="constants.html#Typedef_LegalEntityID">LegalEntityID</a><br/>
+<a href="constants.html#Typedef_LocationID">LocationID</a><br/>
+<a href="constants.html#Struct_Period">Period</a><br/>
+<a href="constants.html#Typedef_PersonID">PersonID</a><br/>
+<a href="constants.html#Typedef_PhoneID">PhoneID</a><br/>
+<a href="constants.html#Typedef_RecordStatus">RecordStatus</a><br/>
+<a href="constants.html#Enum_RecordStatusE">RecordStatusE</a><br/>
+<a href="constants.html#Typedef_RequestedEntityTypes">RequestedEntityTypes</a><br/>
+<a href="constants.html#Typedef_SharingLevel">SharingLevel</a><br/>
+<a href="constants.html#Enum_SharingLevelE">SharingLevelE</a><br/>
+<a href="constants.html#Typedef_Timestamp">Timestamp</a><br/>
+<a href="constants.html#Struct_TimestampWithZone">TimestampWithZone</a><br/>
+<a href="constants.html#Struct_Timezone">Timezone</a><br/>
+<a href="constants.html#Typedef_WeakEnum">WeakEnum</a><br/>
+<a href="constants.html#Typedef_uuid">uuid</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_AgeRange">Enumeration: AgeRange</h3>
+AgeRange is supplied when exact brith_date is masked for privacy
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Minor</code></td><td><code>0</code></td></tr>
+<tr><td><code>Age18to24</code></td><td><code>18</code></td></tr>
+<tr><td><code>Age25to29</code></td><td><code>25</code></td></tr>
+<tr><td><code>Age30to34</code></td><td><code>30</code></td></tr>
+<tr><td><code>Age35to39</code></td><td><code>35</code></td></tr>
+<tr><td><code>Age40to44</code></td><td><code>40</code></td></tr>
+<tr><td><code>Age45to49</code></td><td><code>45</code></td></tr>
+<tr><td><code>Age50to54</code></td><td><code>50</code></td></tr>
+<tr><td><code>Age55to59</code></td><td><code>55</code></td></tr>
+<tr><td><code>Age60to64</code></td><td><code>60</code></td></tr>
+<tr><td><code>Age65up</code></td><td><code>65</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_Gender">Enumeration: Gender</h3>
+person gender
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Female</code></td><td><code>1</code></td></tr>
+<tr><td><code>Male</code></td><td><code>2</code></td></tr>
+<tr><td><code>Unknown</code></td><td><code>3</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_ContactTypeE">Enumeration: ContactTypeE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Other</code></td><td><code>1</code></td></tr>
+<tr><td><code>Work</code></td><td><code>2</code></td></tr>
+<tr><td><code>Home</code></td><td><code>3</code></td></tr>
+<tr><td><code>Business</code></td><td><code>4</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_RecordStatusE">Enumeration: RecordStatusE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Current</code></td><td><code>1</code></td></tr>
+<tr><td><code>Historical</code></td><td><code>2</code></td></tr>
+<tr><td><code>Deceased</code></td><td><code>3</code></td></tr>
+<tr><td><code>Inaccurate</code></td><td><code>4</code></td></tr>
+<tr><td><code>Merged</code></td><td><code>5</code></td></tr>
+<tr><td><code>Suppressed</code></td><td><code>6</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_SharingLevelE">Enumeration: SharingLevelE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Private</code></td><td><code>1</code></td></tr>
+<tr><td><code>Shared</code></td><td><code>2</code></td></tr>
+<tr><td><code>Public</code></td><td><code>3</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_DistanceUnit">Enumeration: DistanceUnit</h3>
+units of distance
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Miles</code></td><td><code>0</code></td></tr>
+<tr><td><code>Kilometers</code></td><td><code>1</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_EntityTypeE">Enumeration: EntityTypeE</h3>
+Valid WP data object types
+may be bit-masked when specifying acceptable/desired types on query
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Person</code></td><td><code>1</code></td></tr>
+<tr><td><code>Business</code></td><td><code>2</code></td></tr>
+<tr><td><code>Location</code></td><td><code>4</code></td></tr>
+<tr><td><code>Phone</code></td><td><code>8</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_DurabilityTypeE">Enumeration: DurabilityTypeE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Durable</code></td><td><code>0</code></td></tr>
+<tr><td><code>Ephemeral</code></td><td><code>1</code></td></tr>
+<tr><td><code>Temporary</code></td><td><code>2</code></td></tr>
+</table></div>
+<hr/><h2 id="Typedefs">Type declarations</h2>
+<div class="definition"><h3 id="Typedef_WeakEnum">Typedef: WeakEnum</h3>
+<p><strong>Base type:</strong>&nbsp;<code>i16</code></p>
+</div>
+<div class="definition"><h3 id="Typedef_ContactType">Typedef: ContactType</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_RecordStatus">Typedef: RecordStatus</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_SharingLevel">Typedef: SharingLevel</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Timestamp">Typedef: Timestamp</h3>
+<p><strong>Base type:</strong>&nbsp;<code>i64</code></p>
+</div>
+<div class="definition"><h3 id="Typedef_EntityType">Typedef: EntityType</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">WeakEnum</a></code></p>
+on output, this will have one bit set corresponding to values
+from EntityTypeE
+<br/></div>
+<div class="definition"><h3 id="Typedef_RequestedEntityTypes">Typedef: RequestedEntityTypes</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_EntityType">EntityType</a></code></p>
+used to request desired Entity Types may have multiple bits set
+from EntityTypeE
+<br/></div>
+<div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
+<p><strong>Base type:</strong>&nbsp;<code>string</code></p>
+uuid is a string of 32 hex digits representing a 128-bit UUID
+acceptable representations my include dashes seperating five groups in the form 8-4-4-4-12
+see http://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
+<br/></div>
+<div class="definition"><h3 id="Typedef_DurabilityType">Typedef: DurabilityType</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_PersonID">Typedef: PersonID</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Struct_EntityID">EntityID</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_BusinessID">Typedef: BusinessID</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Struct_EntityID">EntityID</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_LegalEntityID">Typedef: LegalEntityID</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Struct_EntityID">EntityID</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_LocationID">Typedef: LocationID</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Struct_EntityID">EntityID</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_PhoneID">Typedef: PhoneID</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Struct_EntityID">EntityID</a></code></p>
+</div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_LatLong">Struct: LatLong</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>latitude</td><td><code>double</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>longitude</td><td><code>double</code></td><td></td><td>required</td><td></td></tr>
+</table><br/>standard latitude, longitude tuple
+<br/></div><div class="definition"><h3 id="Struct_Distance">Struct: Distance</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>value</td><td><code>double</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>unit</td><td><code><a href="constants.html#Enum_DistanceUnit">DistanceUnit</a></code></td><td>units of value, default: Miles
+</td><td>optional</td><td></td></tr>
+</table><br/>Distance measure
+<br/></div><div class="definition"><h3 id="Struct_Date">Struct: Date</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>year</td><td><code>i32</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>month</td><td><code>i32</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>day</td><td><code>i32</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>Date structure allowing varied precision: could be year, year-month,
+or year-month-dayofmonth
+<br/></div><div class="definition"><h3 id="Struct_Timezone">Struct: Timezone</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>gmt_offset</td><td><code>i32</code></td><td>GMT Offset in minutes, Examples -800, +530
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>observes_dst</td><td><code>bool</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>Represents a Time Zone and all of its important properties
+<br/></div><div class="definition"><h3 id="Struct_TimestampWithZone">Struct: TimestampWithZone</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>time</td><td><code><a href="constants.html#Typedef_Timestamp">Timestamp</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>zone</td><td><code><a href="constants.html#Struct_Timezone">Timezone</a></code></td><td></td><td>required</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Period">Struct: Period</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>start</td><td><code><a href="constants.html#Struct_Date">Date</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>stop</td><td><code><a href="constants.html#Struct_Date">Date</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>Closed date-time interval [start..stop]
+(NOTE begin,end are thrift keywords, so we use start,stop)
+<br/></div><div class="definition"><h3 id="Struct_EntityID">Struct: EntityID</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>type</td><td><code><a href="constants.html#Typedef_EntityType">EntityType</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>uuid</td><td><code><a href="constants.html#Typedef_uuid">uuid</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>3</td><td>durability</td><td><code><a href="constants.html#Typedef_DurabilityType">DurabilityType</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>All WP data objects are uniquely identified by this typed entity id triple
+By default EntityIDs are expected to be durable IDs a client may store and re-retrieve
+Some objects are acquired through third parties that don't offer first class mappings,
+in which case weaker gaurantees are made about the re-retrievability of the entity
+<br/></div></div></body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: error_codes</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: error_codes</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>error_codes</td><td></td>
+<td><a href="error_codes.html#Enum_InputErrorsE">InputErrorsE</a><br/>
+<a href="error_codes.html#Enum_InputFieldErrorsE">InputFieldErrorsE</a><br/>
+<a href="error_codes.html#Enum_PermissionErrorsE">PermissionErrorsE</a><br/>
+<a href="error_codes.html#Enum_UpstreamErrorsE">UpstreamErrorsE</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_UpstreamErrorsE">Enumeration: UpstreamErrorsE</h3>
+There are a different set of error codes for each
+value of WP::Data::ExceptionTypeE.
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Unknown</code></td><td><code>0</code></td></tr>
+<tr><td><code>DAS2NoResultField</code></td><td><code>100</code></td></tr>
+<tr><td><code>DAS2UnexpectedResultValue</code></td><td><code>101</code></td></tr>
+<tr><td><code>DIRSVCEntityNotFound</code></td><td><code>200</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_InputErrorsE">Enumeration: InputErrorsE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Unknown</code></td><td><code>0</code></td></tr>
+<tr><td><code>InvalidQuery</code></td><td><code>1</code></td></tr>
+<tr><td><code>ParsedBusinessNotSupportedForPersonSearch</code></td><td><code>100</code></td></tr>
+<tr><td><code>RawLocationNotSupportedForBusinessSearch</code></td><td><code>200</code></td></tr>
+<tr><td><code>ParsedNameNotSupportedForBusinessSearch</code></td><td><code>201</code></td></tr>
+<tr><td><code>PersonIdsNotSupportedForBusinessSearch</code></td><td><code>202</code></td></tr>
+<tr><td><code>LatitudeAndLongitudeRequired</code></td><td><code>300</code></td></tr>
+<tr><td><code>PageFirstMustBeMultipleOfPageLen</code></td><td><code>301</code></td></tr>
+<tr><td><code>InvalidEagerLoadType</code></td><td><code>1000</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_InputFieldErrorsE">Enumeration: InputFieldErrorsE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Unknown</code></td><td><code>0</code></td></tr>
+<tr><td><code>Missing</code></td><td><code>1</code></td></tr>
+<tr><td><code>Invalid</code></td><td><code>2</code></td></tr>
+<tr><td><code>TooShort</code></td><td><code>3</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_PermissionErrorsE">Enumeration: PermissionErrorsE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Unknown</code></td><td><code>0</code></td></tr>
+<tr><td><code>InvalidAppId</code></td><td><code>1</code></td></tr>
+<tr><td><code>MissingAppId</code></td><td><code>2</code></td></tr>
+<tr><td><code>MissingAppUserId</code></td><td><code>3</code></td></tr>
+<tr><td><code>RequestedPermissionExceededAllowMaximum</code></td><td><code>4</code></td></tr>
+</table></div>
+</div></body></html>
