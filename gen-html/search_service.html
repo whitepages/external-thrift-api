@@ -11,8 +11,6 @@
 <tr>
 <td>search_service</td><td><a href="search_service.html#Svc_Search">Search</a><br/>
 <ul>
-<li><a href="search_service.html#Fn_Search_deep_ping">deep_ping</a></li>
-<li><a href="search_service.html#Fn_Search_dirsvc_short_id_to_entity_id">dirsvc_short_id_to_entity_id</a></li>
 <li><a href="search_service.html#Fn_Search_find">find</a></li>
 <li><a href="search_service.html#Fn_Search_retrieve">retrieve</a></li>
 </ul>
@@ -24,33 +22,14 @@
 <h3 id="Svc_Search">Service: Search</h3>
 <div class="definition"><h4 id="Fn_Search_retrieve">Function: Search.retrieve</h4>
 <pre><code><a href="result.html#Struct_Result">result.Result</a></code> retrieve(<code>list&lt;<code><a href="constants.html#Struct_EntityID">constants.EntityID</a></code>&gt;</code> ids,
-                       <code><a href="qualifiers.html#Struct_RetrieveQualifiers">qualifiers.RetrieveQualifiers</a></code> qualifiers,
-                       <code><a href="selection.html#Struct_RetrieveSelection">selection.RetrieveSelection</a></code> selection,
                        <code><a href="context.html#Struct_Context">context.Context</a></code> context)
     throws <code><a href="server_exception.html#Struct_ServerException">server_exception.ServerException</a></code>
-</pre>Retreive one or more entities by EntityID
-  results vector will be in same order as ids parameter list
-TODO does this mean we need an "NA" EntityType for placeholding invalid IDs?
+</pre>Retreive one or more entities by EntityID.
+The results vector will be in same order as ids parameter list
 <br/></div><div class="definition"><h4 id="Fn_Search_find">Function: Search.find</h4>
 <pre><code><a href="result.html#Struct_Result">result.Result</a></code> find(<code><a href="query.html#Struct_Query">query.Query</a></code> query,
-                   <code><a href="qualifiers.html#Struct_FindQualifiers">qualifiers.FindQualifiers</a></code> qualifiers,
-                   <code><a href="selection.html#Struct_FindSelection">selection.FindSelection</a></code> selection,
-                   <code><a href="filter.html#Struct_FindFilter">filter.FindFilter</a></code> filter,
                    <code><a href="context.html#Struct_Context">context.Context</a></code> context)
     throws <code><a href="server_exception.html#Struct_ServerException">server_exception.ServerException</a></code>
-</pre>* Search for entities
-*
-* query is the query to perform
-* qualifiers determine what entities that match the query are selected
-* filter does facet filtering
-* selection
-#
-* results ordering will be based on search scoring and ranking
-<br/></div><div class="definition"><h4 id="Fn_Search_deep_ping">Function: Search.deep_ping</h4>
-<pre><code>string</code> deep_ping(<code>string</code> echo_arg)
-    throws <code><a href="server_exception.html#Struct_ServerException">server_exception.ServerException</a></code>
-</pre>may be used as liveness test
-<br/></div><div class="definition"><h4 id="Fn_Search_dirsvc_short_id_to_entity_id">Function: Search.dirsvc_short_id_to_entity_id</h4>
-<pre><code><a href="constants.html#Struct_EntityID">constants.EntityID</a></code> dirsvc_short_id_to_entity_id(<code>string</code> short_id)
-    throws <code><a href="server_exception.html#Struct_ServerException">server_exception.ServerException</a></code>
-</pre></div></div></body></html>
+</pre>Search for entities.
+Results ordering will be based on search scoring and ranking
+<br/></div></div></body></html>

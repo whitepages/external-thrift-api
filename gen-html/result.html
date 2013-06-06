@@ -65,8 +65,6 @@ result entries are tuple of typed EntityIDs and relevancy scores
 </td><td>required</td><td></td></tr>
 <tr><td>6</td><td>phones</td><td><code>map&lt;<code><a href="constants.html#Typedef_PhoneID">constants.PhoneID</a></code>, <code><a href="wrapped_phone.html#Struct_WrappedPhone">wrapped_phone.WrappedPhone</a></code>&gt;</code></td><td>dictionary of all phones in result or materially referenced in result graph
 </td><td>required</td><td></td></tr>
-<tr><td>20</td><td>suggestions</td><td><code><a href="suggestions.html#Typedef_Suggestions">suggestions.Suggestions</a></code></td><td>NOTIMPLEMENTED facet information
-</td><td>optional</td><td></td></tr>
 <tr><td>22</td><td>global_exceptions</td><td><code>list&lt;<code><a href="search_exception.html#Struct_SearchException">search_exception.SearchException</a></code>&gt;</code></td><td>exceptions global to the request
 </td><td>required</td><td></td></tr>
 <tr><td>40</td><td>result_id</td><td><code><a href="result.html#Typedef_ResultID">ResultID</a></code></td><td></td><td>required</td><td></td></tr>
@@ -75,7 +73,6 @@ result entries are tuple of typed EntityIDs and relevancy scores
 <tr><td>43</td><td>exact_match_count</td><td><code>i32</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>44</td><td>total_result_count</td><td><code>i32</code></td><td>Number of root results matching search
 </td><td>required</td><td></td></tr>
-<tr><td>99</td><td>debug_info</td><td><code>list&lt;<code>string</code>&gt;</code></td><td></td><td>required</td><td>{  }</td></tr>
 </table><br/>Search result needs to represent an arbitrarily deep object graph of related data-objects (entities)
 it's composed of an ordered result vector of typed EntityIDs and a dictionary mapping id to datum for each principle entity type
 <p/>
