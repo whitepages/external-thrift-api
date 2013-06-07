@@ -47,22 +47,25 @@
 <a href="http://whitepages.github.io/external-thrift-api/gen-html/wrapped_business.html">Business</a>: A business, with a name, eg WhitePages.  Businesses have start dates, categories (eg Pizza Shop) and other characterstics.</li>
 <li>
 <a href="http://whitepages.github.io/external-thrift-api/gen-html/wrapped_location.html">Location</a>: A physical location, eg 1301 5th Avenue.  Locations have latitude and longitude coordinates, addresses, types (house, apartment, etc) and other characteristics.</li>
-</ul><p>WhitePages provides two major API calls;  </p>
-
-<ul>
-<li>
-<a href="http://whitepages.github.io/external-thrift-api/gen-html/search_service.html">Find</a>: Using <a href="http://whitepages.github.io/external-thrift-api/gen-html/query.html">query parameters</a>, find one or more People, Phones, Locations or Businesses.</li>
-<li>
-<a href="http://whitepages.github.io/external-thrift-api/gen-html/search_service.html">Retrieve</a>: Given the ID of a Person, Phone, Location or Business, retrieve more information.</li>
 </ul><h3>
 <a name="the-whitepages-graph" class="anchor" href="#the-whitepages-graph"><span class="octicon octicon-link"></span></a>The WhitePages Graph</h3>
 
 <p>For information about the data graph model exposed by this API, see:</p>
 
 <ul>
-<li><a href="https://docs.google.com/a/whitepages.com/drawings/d/1MRwsoMD4WinksgbxHxgHlKLEfVRkAzqlCI6fQewGN5E/edit">An overview of the graph model and key terminology</a></li>
-<li><a href="https://docs.google.com/a/whitepages.com/drawings/d/1p1G7CV33cVUfdQFMhq1h42bAopOEgHLbIUChpfgtl8s/edit">Relationships between the four core entity types</a></li>
-<li><a href="https://docs.google.com/a/whitepages.com/drawings/d/19y5fY91Cj1O6CO8QjFBo2ysSW2EP9p8tkvby93ptIUg/edit">Reference showing members of each entity type</a></li>
+<li><a href="http://whitepages.github.io/external-thrift-api/images/WP--SAL%20Entities%20and%20Graph%20Overview.pdf">An overview of the graph model and key terminology</a></li>
+<li><a href="http://whitepages.github.io/external-thrift-api/images/WP--SAL%20Entity%20Relationships.pdf">Relationships between the four core entity types</a></li>
+<li><a href="http://whitepages.github.io/external-thrift-api/images/WP--SAL%20Entity%20Members%20Reference.pdf">Reference showing members of each entity type</a></li>
+</ul><h3>
+<a name="the-whitepages-pro-api" class="anchor" href="#the-whitepages-pro-api"><span class="octicon octicon-link"></span></a>The WhitePages PRO API</h3>
+
+<p>WhitePages provides two major API calls;  </p>
+
+<ul>
+<li>
+<a href="http://whitepages.github.io/external-thrift-api/gen-html/search_service.html">Find</a>: Using <a href="http://whitepages.github.io/external-thrift-api/gen-html/query.html">query parameters</a>, find one or more People, Phones, Locations or Businesses.</li>
+<li>
+<a href="http://whitepages.github.io/external-thrift-api/gen-html/search_service.html">Retrieve</a>: Given the ID of a Person, Phone, Location or Business, retrieve more information.</li>
 </ul><h4>
 <a name="using-find" class="anchor" href="#using-find"><span class="octicon octicon-link"></span></a>Using find()</h4>
 
@@ -116,10 +119,7 @@ depth and parent entity.</p></li>
 <li><p>Some fields show search results information, such as score. These
 are only available on entities accessed directly from a
 SearchResults object.</p></li>
-</ul><h3>
-<a name="to-gen-html" class="anchor" href="#to-gen-html"><span class="octicon octicon-link"></span></a>To gen-html</h3>
-
-<p>ssikora@scosikm0:~/repo/external-thrift-api$ thrift -r -gen html thrift/wp-api-search</p>
+</ul>
       </section>
     </div>
 
