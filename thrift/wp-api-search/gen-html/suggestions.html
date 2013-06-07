@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: suggestions</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: suggestions</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>suggestions</td><td></td>
+<td><a href="suggestions.html#Struct_BusinessCategorySuggestion">BusinessCategorySuggestion</a><br/>
+<a href="suggestions.html#Struct_BusinessChainSuggestion">BusinessChainSuggestion</a><br/>
+<a href="suggestions.html#Struct_LocationSuggestion">LocationSuggestion</a><br/>
+<a href="suggestions.html#Struct_Suggestion">Suggestion</a><br/>
+<a href="suggestions.html#Typedef_SuggestionCharacter">SuggestionCharacter</a><br/>
+<a href="suggestions.html#Enum_SuggestionCharacterE">SuggestionCharacterE</a><br/>
+<a href="suggestions.html#Struct_SuggestionClass">SuggestionClass</a><br/>
+<a href="suggestions.html#Typedef_SuggestionSet">SuggestionSet</a><br/>
+<a href="suggestions.html#Typedef_SuggestionType">SuggestionType</a><br/>
+<a href="suggestions.html#Enum_SuggestionTypeE">SuggestionTypeE</a><br/>
+<a href="suggestions.html#Typedef_Suggestions">Suggestions</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_SuggestionCharacterE">Enumeration: SuggestionCharacterE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Facet</code></td><td><code>0</code></td></tr>
+<tr><td><code>Alternative</code></td><td><code>1</code></td></tr>
+<tr><td><code>Expansion</code></td><td><code>2</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_SuggestionTypeE">Enumeration: SuggestionTypeE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Location</code></td><td><code>0</code></td></tr>
+<tr><td><code>JobTitle</code></td><td><code>1</code></td></tr>
+<tr><td><code>Department</code></td><td><code>2</code></td></tr>
+<tr><td><code>Company</code></td><td><code>3</code></td></tr>
+<tr><td><code>BusinessChain</code></td><td><code>4</code></td></tr>
+<tr><td><code>BusinessCategory</code></td><td><code>5</code></td></tr>
+<tr><td><code>City</code></td><td><code>6</code></td></tr>
+<tr><td><code>State</code></td><td><code>7</code></td></tr>
+<tr><td><code>PostalCode</code></td><td><code>8</code></td></tr>
+<tr><td><code>Neighborhood</code></td><td><code>9</code></td></tr>
+<tr><td><code>MetroArea</code></td><td><code>10</code></td></tr>
+<tr><td><code>County</code></td><td><code>11</code></td></tr>
+<tr><td><code>Country</code></td><td><code>12</code></td></tr>
+<tr><td><code>AgeRange</code></td><td><code>13</code></td></tr>
+</table></div>
+<hr/><h2 id="Typedefs">Type declarations</h2>
+<div class="definition"><h3 id="Typedef_SuggestionCharacter">Typedef: SuggestionCharacter</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_SuggestionType">Typedef: SuggestionType</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_SuggestionSet">Typedef: SuggestionSet</h3>
+<p><strong>Base type:</strong>&nbsp;<code>list&lt;<code><a href="suggestions.html#Struct_Suggestion">Suggestion</a></code>&gt;</code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Suggestions">Typedef: Suggestions</h3>
+<p><strong>Base type:</strong>&nbsp;<code>map&lt;<code><a href="suggestions.html#Struct_SuggestionClass">SuggestionClass</a></code>, <code><a href="suggestions.html#Typedef_SuggestionSet">SuggestionSet</a></code>&gt;</code></p>
+</div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_LocationSuggestion">Struct: LocationSuggestion</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>id</td><td><code><a href="constants.html#Struct_EntityID">constants.EntityID</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>name</td><td><code>string</code></td><td>a location_id
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>type</td><td><code><a href="location.html#Typedef_LocationType">location.LocationType</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/> * XxxxSuggestion structures are generally of the form id, name which supply an id
+ * which can be supplied to requery on the facet, and name is the simple display
+ * name for the facet
+<p/>
+** Represents location facet info.
+<br/></div><div class="definition"><h3 id="Struct_BusinessChainSuggestion">Struct: BusinessChainSuggestion</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>id</td><td><code><a href="constants.html#Typedef_uuid">constants.uuid</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>Represents a unique business chain name and identifier.
+<br/></div><div class="definition"><h3 id="Struct_BusinessCategorySuggestion">Struct: BusinessCategorySuggestion</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>id</td><td><code><a href="constants.html#Typedef_uuid">constants.uuid</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>business category facet information
+<br/></div><div class="definition"><h3 id="Struct_Suggestion">Struct: Suggestion</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>count</td><td><code>i32</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>10</td><td>location</td><td><code><a href="suggestions.html#Struct_LocationSuggestion">LocationSuggestion</a></code></td><td>Exactly one of the following should be set,
+based on the SuggestionType of this suggestion
+</td><td>optional</td><td></td></tr>
+<tr><td>11</td><td>job_title</td><td><code><a href="job_title.html#Struct_JobTitle">job_title.JobTitle</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>12</td><td>department</td><td><code><a href="department.html#Struct_Department">department.Department</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>13</td><td>company</td><td><code><a href="company.html#Struct_Company">company.Company</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>14</td><td>business_chain</td><td><code><a href="suggestions.html#Struct_BusinessChainSuggestion">BusinessChainSuggestion</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>15</td><td>business_category</td><td><code><a href="suggestions.html#Struct_BusinessCategorySuggestion">BusinessCategorySuggestion</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_SuggestionClass">Struct: SuggestionClass</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>type</td><td><code><a href="suggestions.html#Typedef_SuggestionType">SuggestionType</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>character</td><td><code><a href="suggestions.html#Typedef_SuggestionCharacter">SuggestionCharacter</a></code></td><td></td><td>required</td><td></td></tr>
+</table><br/></div></div></body></html>

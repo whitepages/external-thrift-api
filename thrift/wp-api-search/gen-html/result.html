@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: result</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: result</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>result</td><td></td>
+<td><a href="result.html#Struct_Result">Result</a><br/>
+<a href="result.html#Struct_ResultEntry">ResultEntry</a><br/>
+<a href="result.html#Typedef_ResultID">ResultID</a><br/>
+<a href="result.html#Struct_ResultMeta">ResultMeta</a><br/>
+<a href="result.html#Typedef_ResultStatus">ResultStatus</a><br/>
+<a href="result.html#Enum_ResultStatusE">ResultStatusE</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_ResultStatusE">Enumeration: ResultStatusE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Success</code></td><td><code>0</code></td></tr>
+<tr><td><code>Partial</code></td><td><code>1</code></td></tr>
+<tr><td><code>Failure</code></td><td><code>2</code></td></tr>
+</table></div>
+<hr/><h2 id="Typedefs">Type declarations</h2>
+<div class="definition"><h3 id="Typedef_ResultStatus">Typedef: ResultStatus</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_ResultID">Typedef: ResultID</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_uuid">constants.uuid</a></code></p>
+</div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_ResultEntry">Struct: ResultEntry</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>id</td><td><code><a href="constants.html#Struct_EntityID">constants.EntityID</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>score</td><td><code>double</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>3</td><td>is_exact_match</td><td><code>bool</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>4</td><td>entity_exceptions</td><td><code>list&lt;<code><a href="search_exception.html#Struct_SearchException">search_exception.SearchException</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ResultMeta">Struct: ResultMeta</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>result_id</td><td><code><a href="result.html#Typedef_ResultID">ResultID</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>3</td><td>time_of_query</td><td><code><a href="constants.html#Typedef_Timestamp">constants.Timestamp</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>5</td><td>query_duration_secs</td><td><code>double</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>7</td><td>exact_match_count</td><td><code>i32</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>9</td><td>total_result_count</td><td><code>i32</code></td><td>Number of root results matching search
+</td><td>required</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Result">Struct: Result</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>result_status</td><td><code><a href="result.html#Typedef_ResultStatus">ResultStatus</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>results</td><td><code>list&lt;<code><a href="result.html#Struct_ResultEntry">ResultEntry</a></code>&gt;</code></td><td>results is a list of ordered lists of result entries
+one list per query in same order as input queries,
+each list is ordered by relevance based on query
+
+result entries are tuple of typed EntityIDs and relevancy scores
+</td><td>required</td><td></td></tr>
+<tr><td>3</td><td>people</td><td><code>map&lt;<code><a href="constants.html#Typedef_PersonID">constants.PersonID</a></code>, <code><a href="wrapped_person.html#Struct_WrappedPerson">wrapped_person.WrappedPerson</a></code>&gt;</code></td><td>dictionary of all people in result or materially referenced in result graph
+</td><td>required</td><td></td></tr>
+<tr><td>4</td><td>businesses</td><td><code>map&lt;<code><a href="constants.html#Typedef_BusinessID">constants.BusinessID</a></code>, <code><a href="wrapped_business.html#Struct_WrappedBusiness">wrapped_business.WrappedBusiness</a></code>&gt;</code></td><td>dictionary of all businesses in result or materially referenced in result graph
+</td><td>required</td><td></td></tr>
+<tr><td>5</td><td>locations</td><td><code>map&lt;<code><a href="constants.html#Typedef_LocationID">constants.LocationID</a></code>, <code><a href="wrapped_location.html#Struct_WrappedLocation">wrapped_location.WrappedLocation</a></code>&gt;</code></td><td>dictionary of all locations in result or materially referenced in result graph
+</td><td>required</td><td></td></tr>
+<tr><td>6</td><td>phones</td><td><code>map&lt;<code><a href="constants.html#Typedef_PhoneID">constants.PhoneID</a></code>, <code><a href="wrapped_phone.html#Struct_WrappedPhone">wrapped_phone.WrappedPhone</a></code>&gt;</code></td><td>dictionary of all phones in result or materially referenced in result graph
+</td><td>required</td><td></td></tr>
+<tr><td>22</td><td>global_exceptions</td><td><code>list&lt;<code><a href="search_exception.html#Struct_SearchException">search_exception.SearchException</a></code>&gt;</code></td><td>exceptions global to the request
+</td><td>required</td><td></td></tr>
+<tr><td>40</td><td>result_id</td><td><code><a href="result.html#Typedef_ResultID">ResultID</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>41</td><td>time_of_query</td><td><code><a href="constants.html#Typedef_Timestamp">constants.Timestamp</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>42</td><td>query_duration_secs</td><td><code>double</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>43</td><td>exact_match_count</td><td><code>i32</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>44</td><td>total_result_count</td><td><code>i32</code></td><td>Number of root results matching search
+</td><td>required</td><td></td></tr>
+</table><br/>Search result needs to represent an arbitrarily deep object graph of related data-objects (entities)
+it's composed of an ordered result vector of typed EntityIDs and a dictionary mapping id to datum for each principle entity type
+<p/>
+<br/></div></div></body></html>

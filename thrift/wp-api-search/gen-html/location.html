@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: location</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: location</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>location</td><td></td>
+<td><a href="location.html#Typedef_AddressIncompleteReason">AddressIncompleteReason</a><br/>
+<a href="location.html#Enum_AddressIncompleteReasonE">AddressIncompleteReasonE</a><br/>
+<a href="location.html#Typedef_AddressNotReceivingMailReason">AddressNotReceivingMailReason</a><br/>
+<a href="location.html#Enum_AddressNotReceivingMailReasonE">AddressNotReceivingMailReasonE</a><br/>
+<a href="location.html#Typedef_AddressType">AddressType</a><br/>
+<a href="location.html#Enum_AddressTypeE">AddressTypeE</a><br/>
+<a href="location.html#Typedef_AddressUsage">AddressUsage</a><br/>
+<a href="location.html#Enum_AddressUsageE">AddressUsageE</a><br/>
+<a href="location.html#Typedef_BoxType">BoxType</a><br/>
+<a href="location.html#Enum_BoxTypeE">BoxTypeE</a><br/>
+<a href="location.html#Typedef_DeliveryPointType">DeliveryPointType</a><br/>
+<a href="location.html#Enum_DeliveryPointTypeE">DeliveryPointTypeE</a><br/>
+<a href="location.html#Typedef_GeoAccuracy">GeoAccuracy</a><br/>
+<a href="location.html#Enum_GeoAccuracyE">GeoAccuracyE</a><br/>
+<a href="location.html#Struct_Location">Location</a><br/>
+<a href="location.html#Typedef_LocationType">LocationType</a><br/>
+<a href="location.html#Enum_LocationTypeE">LocationTypeE</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_LocationTypeE">Enumeration: LocationTypeE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Address</code></td><td><code>1</code></td></tr>
+<tr><td><code>State</code></td><td><code>2</code></td></tr>
+<tr><td><code>City</code></td><td><code>3</code></td></tr>
+<tr><td><code>County</code></td><td><code>4</code></td></tr>
+<tr><td><code>Neighborhood</code></td><td><code>5</code></td></tr>
+<tr><td><code>PostalCode</code></td><td><code>6</code></td></tr>
+<tr><td><code>Country</code></td><td><code>7</code></td></tr>
+<tr><td><code>ZipPlus4</code></td><td><code>8</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_AddressNotReceivingMailReasonE">Enumeration: AddressNotReceivingMailReasonE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Vacant</code></td><td><code>0</code></td></tr>
+<tr><td><code>NewConstruction</code></td><td><code>1</code></td></tr>
+<tr><td><code>Rural</code></td><td><code>2</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_AddressUsageE">Enumeration: AddressUsageE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Residential</code></td><td><code>1</code></td></tr>
+<tr><td><code>Business</code></td><td><code>2</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_DeliveryPointTypeE">Enumeration: DeliveryPointTypeE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>CommercialMailDrop</code></td><td><code>1</code></td></tr>
+<tr><td><code>POBoxThrowback</code></td><td><code>2</code></td></tr>
+<tr><td><code>POBox</code></td><td><code>3</code></td></tr>
+<tr><td><code>MultiUnit</code></td><td><code>4</code></td></tr>
+<tr><td><code>SingleUnit</code></td><td><code>5</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_BoxTypeE">Enumeration: BoxTypeE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Facility</code></td><td><code>0</code></td></tr>
+<tr><td><code>Contest</code></td><td><code>1</code></td></tr>
+<tr><td><code>Detached</code></td><td><code>2</code></td></tr>
+<tr><td><code>NonPersonnelUnit</code></td><td><code>3</code></td></tr>
+<tr><td><code>School</code></td><td><code>4</code></td></tr>
+<tr><td><code>Remittance</code></td><td><code>5</code></td></tr>
+<tr><td><code>CallerService</code></td><td><code>6</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_AddressIncompleteReasonE">Enumeration: AddressIncompleteReasonE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>MissingSecondaryNumber</code></td><td><code>1</code></td></tr>
+<tr><td><code>MissingPrivateMailboxDesignator</code></td><td><code>2</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_GeoAccuracyE">Enumeration: GeoAccuracyE</h3>
+Represents the qualitative accuracy of the lat-long for the location.
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>RoofTop</code></td><td><code>1</code></td></tr>
+<tr><td><code>Street</code></td><td><code>2</code></td></tr>
+<tr><td><code>PostalCode</code></td><td><code>3</code></td></tr>
+<tr><td><code>City</code></td><td><code>4</code></td></tr>
+<tr><td><code>State</code></td><td><code>5</code></td></tr>
+<tr><td><code>Country</code></td><td><code>6</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_AddressTypeE">Enumeration: AddressTypeE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Firm</code></td><td><code>1</code></td></tr>
+<tr><td><code>GeneralDelivery</code></td><td><code>2</code></td></tr>
+<tr><td><code>Highrise</code></td><td><code>3</code></td></tr>
+<tr><td><code>POBox</code></td><td><code>4</code></td></tr>
+<tr><td><code>RuralRoute</code></td><td><code>5</code></td></tr>
+<tr><td><code>Street</code></td><td><code>6</code></td></tr>
+</table></div>
+<hr/><h2 id="Typedefs">Type declarations</h2>
+<div class="definition"><h3 id="Typedef_LocationType">Typedef: LocationType</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_AddressNotReceivingMailReason">Typedef: AddressNotReceivingMailReason</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_AddressUsage">Typedef: AddressUsage</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_DeliveryPointType">Typedef: DeliveryPointType</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_BoxType">Typedef: BoxType</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_AddressIncompleteReason">Typedef: AddressIncompleteReason</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_GeoAccuracy">Typedef: GeoAccuracy</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_AddressType">Typedef: AddressType</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_Location">Struct: Location</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>id</td><td><code><a href="constants.html#Typedef_LocationID">constants.LocationID</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>type</td><td><code><a href="location.html#Typedef_LocationType">LocationType</a></code></td><td>Specifies the type of location this represents
+</td><td>required</td><td></td></tr>
+<tr><td>3</td><td>valid_for</td><td><code><a href="constants.html#Struct_Period">constants.Period</a></code></td><td>Period this location is valid
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>legal_entities_at</td><td><code><a href="referenced_legal_entity.html#Typedef_ReferencedLegalEntities">referenced_legal_entity.ReferencedLegalEntities</a></code></td><td>Additional LegalEntities that share this address
+</td><td>optional</td><td></td></tr>
+<tr><td>10</td><td>is_valid</td><td><code>bool</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>12</td><td>validated_at</td><td><code><a href="constants.html#Struct_Date">constants.Date</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>14</td><td>validation_codes</td><td><code>list&lt;<code>string</code>&gt;</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>20</td><td>city</td><td><code>string</code></td><td>Normalized city name. Example "Olympia"
+</td><td>optional</td><td></td></tr>
+<tr><td>21</td><td>postal_code</td><td><code>string</code></td><td>5-digit US or 6 digit Canadian zipcode. Example "92019" or "S3D 3F3"
+</td><td>optional</td><td></td></tr>
+<tr><td>22</td><td>zip4</td><td><code>string</code></td><td>4-digit US zipcode extension. Example "1020"
+</td><td>optional</td><td></td></tr>
+<tr><td>23</td><td>state_code</td><td><code>string</code></td><td>2-character state or province code. Example "WA"
+</td><td>optional</td><td></td></tr>
+<tr><td>24</td><td>country_code</td><td><code>string</code></td><td>Normalized country code. Example "US"
+</td><td>optional</td><td></td></tr>
+<tr><td>29</td><td>time_zone</td><td><code><a href="constants.html#Struct_Timezone">constants.Timezone</a></code></td><td>TimeZone information for this location
+</td><td>optional</td><td></td></tr>
+<tr><td>31</td><td>contained_by_locations</td><td><code><a href="referenced_location.html#Typedef_ReferencedLocations">referenced_location.ReferencedLocations</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>50</td><td>address</td><td><code>string</code></td><td>The complete street address, including both lines as appropriate.
+Example "S 123 Huron Ave SE, Apt 1-A"
+</td><td>optional</td><td></td></tr>
+<tr><td>51</td><td>house</td><td><code>string</code></td><td>House Number. Example "123"
+</td><td>optional</td><td></td></tr>
+<tr><td>52</td><td>street_name</td><td><code>string</code></td><td>Street Name. Example "Huron"
+</td><td>optional</td><td></td></tr>
+<tr><td>53</td><td>street_type</td><td><code>string</code></td><td>Indicator of street type (Ex "Ave" in "NW 45th Ave")
+</td><td>optional</td><td></td></tr>
+<tr><td>54</td><td>pre_dir</td><td><code>string</code></td><td>Directional before a street name (Ex, "NW" in "NW 45th Str")
+</td><td>optional</td><td></td></tr>
+<tr><td>55</td><td>post_dir</td><td><code>string</code></td><td>Directional after a street name (Ex, "NW" in "3rd Ave NW")
+</td><td>optional</td><td></td></tr>
+<tr><td>56</td><td>apt_number</td><td><code>string</code></td><td>Number of the apartment or suite (Ex, "1-A")
+</td><td>optional</td><td></td></tr>
+<tr><td>57</td><td>apt_type</td><td><code>string</code></td><td>Name of unit type (Ex, "Suite" in "Suite 102")
+</td><td>optional</td><td></td></tr>
+<tr><td>58</td><td>box_number</td><td><code>string</code></td><td>PO Box number
+</td><td>optional</td><td></td></tr>
+<tr><td>69</td><td>standard_address_line1</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>70</td><td>standard_address_line2</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>71</td><td>standard_address_location</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>75</td><td>is_receiving_mail</td><td><code>bool</code></td><td>is_receiving_mail
+
+</td><td>optional</td><td></td></tr>
+<tr><td>76</td><td>not_receiving_mail_reason</td><td><code><a href="location.html#Typedef_AddressNotReceivingMailReason">AddressNotReceivingMailReason</a></code></td><td>not_receiving_mail: reason why address does not recieve mail
+
+</td><td>optional</td><td></td></tr>
+<tr><td>77</td><td>usage</td><td><code><a href="location.html#Typedef_AddressUsage">AddressUsage</a></code></td><td>usage: address usage - residential or business
+
+</td><td>optional</td><td></td></tr>
+<tr><td>78</td><td>delivery_point</td><td><code><a href="location.html#Typedef_DeliveryPointType">DeliveryPointType</a></code></td><td>delivery_point: is it a po_box, or apartment building...
+
+</td><td>optional</td><td></td></tr>
+<tr><td>79</td><td>box_type</td><td><code><a href="location.html#Typedef_BoxType">BoxType</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>80</td><td>incomplete_reason</td><td><code><a href="location.html#Typedef_AddressIncompleteReason">AddressIncompleteReason</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>81</td><td>address_type</td><td><code><a href="location.html#Typedef_AddressType">AddressType</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>101</td><td>lat_long</td><td><code><a href="constants.html#Struct_LatLong">constants.LatLong</a></code></td><td>Latitude,longitude in degrees
+</td><td>optional</td><td></td></tr>
+<tr><td>108</td><td>accuracy</td><td><code><a href="location.html#Typedef_GeoAccuracy">GeoAccuracy</a></code></td><td>Accuracy of geolocation information
+</td><td>optional</td><td></td></tr>
+</table><br/>This represents a geographical area. it may be a physical address or a region such as city, state, neighborhood
+<br/></div></div></body></html>

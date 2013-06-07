@@ -1,0 +1,40 @@
+# This file contains the search service interface definition.
+
+namespace java com.whitepages.wp.api.search
+namespace rb WP.API
+
+include "wp-data/constants.thrift"
+include "wp-data-serverexception/server_exception.thrift"
+
+include "result.thrift"
+include "context.thrift"
+include "query.thrift"
+include "qualifiers.thrift"
+include "selection.thrift"
+include "filter.thrift"
+include "error_codes.thrift"
+
+service Search {
+
+  /**
+    * Retreive one or more entities by EntityID.
+    * The results vector will be in same order as ids parameter list
+    */
+  result.Result retrieve(
+    1: list<constants.EntityID>       ids,
+    4: context.Context                context
+  ) throws (1: server_exception.ServerException e),
+
+  /**
+   * Search for entities.
+   * Results ordering will be based on search scoring and ranking
+   */
+  result.Result find(
+    1: query.Query                query,
+    5: context.Context            context
+  ) throws (1: server_exception.ServerException e),
+
+
+}
+
+# Copyright (c) 2012 by Whitepages, Inc. All Rights Reserved.

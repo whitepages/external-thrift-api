@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: email</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: email</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>email</td><td></td>
+<td><a href="email.html#Struct_Email">Email</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_Email">Struct: Email</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>id</td><td><code><a href="constants.html#Typedef_uuid">constants.uuid</a></code></td><td>Unique GUID for this email
+
+optional for now as email is not yet first class entity
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>email_address</td><td><code>string</code></td><td>Full normalized email address
+</td><td>required</td><td></td></tr>
+<tr><td>3</td><td>contact_type</td><td><code><a href="constants.html#Typedef_ContactType">constants.ContactType</a></code></td><td>Type of the contact ( residential, professional, business )
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>is_relay_only</td><td><code>bool</code></td><td>Indicates that the email should not be used for display.
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>sharing_level</td><td><code><a href="constants.html#Typedef_SharingLevel">constants.SharingLevel</a></code></td><td>Permitted Sharing Level (Public, Limited, Private)
+</td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>record_status</td><td><code><a href="constants.html#Typedef_RecordStatus">constants.RecordStatus</a></code></td><td>Status of the contact ( current, inaccurate, etc )
+</td><td>optional</td><td></td></tr>
+<tr><td>7</td><td>valid_period</td><td><code><a href="constants.html#Struct_Period">constants.Period</a></code></td><td>time period this email is valid for
+</td><td>optional</td><td></td></tr>
+<tr><td>9</td><td>label</td><td><code>string</code></td><td>Arbitrary textual label for the type of the contact
+</td><td>optional</td><td></td></tr>
+</table><br/>This data structure describes email contacts
+<br/></div></div></body></html>
