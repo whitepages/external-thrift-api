@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: wrapped_phone</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: wrapped_phone</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>wrapped_phone</td><td></td>
+<td><a href="wrapped_phone.html#Struct_WrappedPhone">WrappedPhone</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_WrappedPhone">Struct: WrappedPhone</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>id</td><td><code><a href="constants.html#Typedef_PhoneID">constants.PhoneID</a></code></td><td>Durable primary key
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>line_type</td><td><code><a href="phone.html#Typedef_LineType">phone.LineType</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>belongs_to</td><td><code><a href="referenced_legal_entity.html#Typedef_ReferencedLegalEntities">referenced_legal_entity.ReferencedLegalEntities</a></code></td><td>Additional LegalEntities that share this phone
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>associated_locations</td><td><code><a href="related_location.html#Typedef_RelatedLocations">related_location.RelatedLocations</a></code></td><td>The addresses associated with this phone
+</td><td>optional</td><td></td></tr>
+<tr><td>20</td><td>phone_number</td><td><code>string</code></td><td>Complete Undecorated phone number without Extension or country code. Example "2065551212"
+</td><td>required</td><td></td></tr>
+<tr><td>21</td><td>display_phone</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>22</td><td>country_calling_code</td><td><code>string</code></td><td>International dialing for the country. Example "1" for USA & Canada
+Default: 1
+</td><td>required</td><td></td></tr>
+<tr><td>25</td><td>extension</td><td><code>string</code></td><td>The extensions (number only) for the phone number. Example "143"
+Default: there is no extension
+</td><td>optional</td><td></td></tr>
+<tr><td>26</td><td>is_tracking</td><td><code>bool</code></td><td>Indicates that the phone is a tracking phone number.
+Default: FALSE
+</td><td>optional</td><td></td></tr>
+<tr><td>31</td><td>is_sms_allowed</td><td><code>bool</code></td><td>Indicates that sending SMS's to the phone is permissible
+STOP messages received for this number will set this false
+Default: True
+</td><td>optional</td><td></td></tr>
+<tr><td>32</td><td>is_sms_capable</td><td><code>bool</code></td><td>Indicates that the phone is capable of receiving SMS messages
+Default: FALSE
+</td><td>optional</td><td></td></tr>
+<tr><td>33</td><td>carrier</td><td><code>string</code></td><td>Telco Carrier
+</td><td>optional</td><td></td></tr>
+<tr><td>34</td><td>do_not_call</td><td><code>bool</code></td><td>Do not call
+Default: False
+</td><td>optional</td><td></td></tr>
+<tr><td>35</td><td>is_user_generated</td><td><code>bool</code></td><td>Whether this phone was user generated
+</td><td>optional</td><td></td></tr>
+<tr><td>40</td><td>reputation</td><td><code><a href="phone.html#Struct_PhoneReputation">phone.PhoneReputation</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div></div></body></html>

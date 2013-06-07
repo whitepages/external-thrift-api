@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: qualifiers</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: qualifiers</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>qualifiers</td><td></td>
+<td><a href="qualifiers.html#Typedef_CNAMUsage">CNAMUsage</a><br/>
+<a href="qualifiers.html#Enum_CNAMUsageE">CNAMUsageE</a><br/>
+<a href="qualifiers.html#Struct_CommonQualifiers">CommonQualifiers</a><br/>
+<a href="qualifiers.html#Struct_FindQualifiers">FindQualifiers</a><br/>
+<a href="qualifiers.html#Struct_PhoneReputationControl">PhoneReputationControl</a><br/>
+<a href="qualifiers.html#Struct_RetrieveQualifiers">RetrieveQualifiers</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_CNAMUsageE">Enumeration: CNAMUsageE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>None</code></td><td><code>0</code></td></tr>
+<tr><td><code>Standard</code></td><td><code>1</code></td></tr>
+<tr><td><code>Extended</code></td><td><code>2</code></td></tr>
+</table></div>
+<hr/><h2 id="Typedefs">Type declarations</h2>
+<div class="definition"><h3 id="Typedef_CNAMUsage">Typedef: CNAMUsage</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_PhoneReputationControl">Struct: PhoneReputationControl</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>show_spam_score</td><td><code>bool</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>max_comments</td><td><code>i16</code></td><td></td><td>optional</td><td>0</td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_CommonQualifiers">Struct: CommonQualifiers</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>show_historical</td><td><code>bool</code></td><td>populate historical data in addition to current data in result objects (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>show_sensitive</td><td><code>bool</code></td><td>show sensitive (inferred) information (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>show_ugc</td><td><code>bool</code></td><td>show UGC data in result (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>show_suppressed</td><td><code>bool</code></td><td>show suppressed data in result (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>show_ugc_private</td><td><code>bool</code></td><td>show private UGC data in result (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>show_containing_locations</td><td><code>bool</code></td><td>show containing locations on location objects, this is slow
+</td><td>optional</td><td></td></tr>
+</table><br/>Flags to control query behavior
+all default to false unless otherwise specified
+<br/></div><div class="definition"><h3 id="Struct_RetrieveQualifiers">Struct: RetrieveQualifiers</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>show_historical</td><td><code>bool</code></td><td>populate historical data in addition to current data in result objects
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>show_sensitive</td><td><code>bool</code></td><td>show sensitive (inferred) information (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>show_ugc</td><td><code>bool</code></td><td>show UGC data in result (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>show_suppressed</td><td><code>bool</code></td><td>show suppressed data in result (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>show_ugc_private</td><td><code>bool</code></td><td>show private UGC data in result (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>show_containing_locations</td><td><code>bool</code></td><td>show containing locations on location objects, this is slow
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_FindQualifiers">Struct: FindQualifiers</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>show_historical</td><td><code>bool</code></td><td>populate historical data in addition to current data in result objects
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>show_sensitive</td><td><code>bool</code></td><td>show sensitive (inferred) information (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>show_ugc</td><td><code>bool</code></td><td>show UGC data in result (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>show_suppressed</td><td><code>bool</code></td><td>show suppressed data in result (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>show_ugc_private</td><td><code>bool</code></td><td>show private UGC data in result (if allowed)
+</td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>show_containing_locations</td><td><code>bool</code></td><td>show containing locations on location objects, this is slow
+</td><td>optional</td><td></td></tr>
+<tr><td>10</td><td>expand_search_area</td><td><code>bool</code></td><td>Confine search to larger geographic area, defaults to true
+</td><td>optional</td><td></td></tr>
+<tr><td>11</td><td>show_do_not_call</td><td><code>bool</code></td><td>Show DNC information
+</td><td>optional</td><td></td></tr>
+<tr><td>12</td><td>show_address_meta</td><td><code>bool</code></td><td>Show address meta information (USPS deliverability and kind)
+</td><td>optional</td><td></td></tr>
+<tr><td>13</td><td>is_spider</td><td><code>bool</code></td><td>Blocks expensive queries when the requestor is determined to be a spider
+</td><td>optional</td><td></td></tr>
+<tr><td>14</td><td>use_cnam</td><td><code><a href="qualifiers.html#Typedef_CNAMUsage">CNAMUsage</a></code></td><td>enum value on what cnam services to use (if any)
+</td><td>optional</td><td></td></tr>
+<tr><td>15</td><td>phone_reputation_ctl</td><td><code><a href="qualifiers.html#Struct_PhoneReputationControl">PhoneReputationControl</a></code></td><td>include hitcounter, which populates spam score information
+</td><td>optional</td><td></td></tr>
+<tr><td>16</td><td>use_standard_external_lookups</td><td><code>bool</code></td><td>include information from standard (cheap) external data provider
+</td><td>optional</td><td></td></tr>
+<tr><td>17</td><td>use_premium_external_lookups</td><td><code>bool</code></td><td>include information from premium (expensive/slow) external data provider
+</td><td>optional</td><td></td></tr>
+<tr><td>18</td><td>show_extended_telco</td><td><code>bool</code></td><td>include more phone information from external provider
+</td><td>optional</td><td></td></tr>
+<tr><td>40</td><td>show_premium_urls</td><td><code>bool</code></td><td>include premium urls in bsrpc responses
+</td><td>optional</td><td></td></tr>
+<tr><td>41</td><td>use_tracking_phones</td><td><code>bool</code></td><td>use tracking phones in result response
+</td><td>optional</td><td></td></tr>
+<tr><td>42</td><td>show_yext_tags</td><td><code>bool</code></td><td>include yext location information
+</td><td>optional</td><td></td></tr>
+<tr><td>43</td><td>use_google_pfc</td><td><code>bool</code></td><td>use google version of PayForClick ad if one is available
+</td><td>optional</td><td></td></tr>
+<tr><td>44</td><td>show_pfc_preview</td><td><code>bool</code></td><td>whether to display PayForClick ads that are in a preview state
+</td><td>optional</td><td></td></tr>
+<tr><td>45</td><td>show_reviews</td><td><code>bool</code></td><td>include user reviews in a bsrpc response
+</td><td>optional</td><td></td></tr>
+<tr><td>46</td><td>use_mobile_pfc</td><td><code>bool</code></td><td>use mobile version of PerForClick ad if one is available
+</td><td>optional</td><td></td></tr>
+<tr><td>47</td><td>show_nearby_businesses</td><td><code>bool</code></td><td>show nearby (unrelated) businesses
+</td><td>optional</td><td></td></tr>
+<tr><td>48</td><td>show_xad_overlays</td><td><code>bool</code></td><td>turns xad overlay on, used in mobile
+</td><td>optional</td><td></td></tr>
+<tr><td>49</td><td>only_show_chains</td><td><code>bool</code></td><td>only return businesses belonging to a business chain
+</td><td>optional</td><td></td></tr>
+<tr><td>50</td><td>use_chain_autodrilldown</td><td><code>bool</code></td><td>automatically lock search to single chain if certain
+threshold is hit
+</td><td>optional</td><td></td></tr>
+<tr><td>51</td><td>limit_chain_results</td><td><code>bool</code></td><td>limit search to only return one business per chain, even if multiple are found
+</td><td>optional</td><td></td></tr>
+<tr><td>52</td><td>show_phone_billing_location</td><td><code>bool</code></td><td>use VRS data in the response
+</td><td>optional</td><td></td></tr>
+</table><br/></div></div></body></html>

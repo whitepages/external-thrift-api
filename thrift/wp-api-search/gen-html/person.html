@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: person</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: person</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>person</td><td></td>
+<td><a href="person.html#Struct_Person">Person</a><br/>
+<a href="person.html#Struct_PersonClaimInfo">PersonClaimInfo</a><br/>
+<a href="person.html#Typedef_PersonShortId">PersonShortId</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Typedefs">Type declarations</h2>
+<div class="definition"><h3 id="Typedef_PersonShortId">Typedef: PersonShortId</h3>
+<p><strong>Base type:</strong>&nbsp;<code>string</code></p>
+Alternative unique short key for a Person object.  This is a sequence of lowercase alphanumeric characters,
+leaving out the letters 'o' and 'l'.  (This is also known as the shortid or seoid.)
+<br/></div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_PersonClaimInfo">Struct: PersonClaimInfo</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>is_user_generated</td><td><code>bool</code></td><td>source of person info is online claim & edit capability
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>is_claimed</td><td><code>bool</code></td><td>claimed record, not third-party edit
+</td><td>required</td><td></td></tr>
+</table><br/>information about the online claim status of a person
+<br/></div><div class="definition"><h3 id="Struct_Person">Struct: Person</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>id</td><td><code><a href="constants.html#Typedef_PersonID">constants.PersonID</a></code></td><td>Durable primary key
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>short_id</td><td><code><a href="person.html#Typedef_PersonShortId">PersonShortId</a></code></td><td>Alternate unique identifier
+</td><td>required</td><td></td></tr>
+<tr><td>10</td><td>names</td><td><code>list&lt;<code><a href="person_info.html#Struct_PersonName">person_info.PersonName</a></code>&gt;</code></td><td>person's core name and demographic info
+</td><td>optional</td><td></td></tr>
+<tr><td>11</td><td>birth_date</td><td><code><a href="constants.html#Struct_Date">constants.Date</a></code></td><td>may be hidden, check age_range if so
+</td><td>optional</td><td></td></tr>
+<tr><td>12</td><td>age_range</td><td><code><a href="constants.html#Enum_AgeRange">constants.AgeRange</a></code></td><td>supplied when birth_date is masked
+</td><td>optional</td><td></td></tr>
+<tr><td>13</td><td>death_date</td><td><code><a href="constants.html#Struct_Date">constants.Date</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>14</td><td>gender</td><td><code><a href="constants.html#Enum_Gender">constants.Gender</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>20</td><td>locations</td><td><code><a href="related_location.html#Typedef_RelatedLocations">related_location.RelatedLocations</a></code></td><td>Current and prior physical addresses for this entity
+</td><td>optional</td><td></td></tr>
+<tr><td>21</td><td>phones</td><td><code><a href="related_phone.html#Typedef_RelatedPhones">related_phone.RelatedPhones</a></code></td><td>Current and prior phone numbers for this entity
+</td><td>optional</td><td></td></tr>
+<tr><td>22</td><td>emails</td><td><code>list&lt;<code><a href="email.html#Struct_Email">email.Email</a></code>&gt;</code></td><td>List of email addresses for this listing
+</td><td>optional</td><td></td></tr>
+<tr><td>23</td><td>ims</td><td><code>list&lt;<code><a href="im.html#Struct_Im">im.Im</a></code>&gt;</code></td><td>List of IM addresses for this entity (currently not supported)
+</td><td>optional</td><td></td></tr>
+<tr><td>24</td><td>media</td><td><code>list&lt;<code><a href="media.html#Struct_Media">media.Media</a></code>&gt;</code></td><td>List of media for this legal entity
+</td><td>optional</td><td></td></tr>
+<tr><td>25</td><td>urls</td><td><code>list&lt;<code><a href="url.html#Struct_Url">url.Url</a></code>&gt;</code></td><td>List of URLs for this legal entity
+</td><td>optional</td><td></td></tr>
+<tr><td>26</td><td>social_links</td><td><code>list&lt;<code><a href="social_link.html#Struct_SocialLink">social_link.SocialLink</a></code>&gt;</code></td><td>List of Social Network links for this legal entity
+</td><td>optional</td><td></td></tr>
+<tr><td>40</td><td>work_info</td><td><code>list&lt;<code><a href="work_info.html#Struct_WorkInfo">work_info.WorkInfo</a></code>&gt;</code></td><td>work/job descriptions for this person
+</td><td>optional</td><td></td></tr>
+<tr><td>50</td><td>is_user_generated</td><td><code>bool</code></td><td>source of person info is online claim & edit capability
+</td><td>required</td><td></td></tr>
+<tr><td>51</td><td>is_claimed</td><td><code>bool</code></td><td>claimed record, not third-party edit
+</td><td>required</td><td></td></tr>
+</table><br/>The listing object is the bucket that contains all of the data returned in
+the search results. Most members of the listing will be optional and will
+often be empty.
+<br/></div></div></body></html>

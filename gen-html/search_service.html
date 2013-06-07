@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: search_service</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: search_service</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>search_service</td><td><a href="search_service.html#Svc_Search">Search</a><br/>
+<ul>
+<li><a href="search_service.html#Fn_Search_find">find</a></li>
+<li><a href="search_service.html#Fn_Search_retrieve">retrieve</a></li>
+</ul>
+</td>
+<td></td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Services">Services</h2>
+<h3 id="Svc_Search">Service: Search</h3>
+<div class="definition"><h4 id="Fn_Search_retrieve">Function: Search.retrieve</h4>
+<pre><code><a href="result.html#Struct_Result">result.Result</a></code> retrieve(<code>list&lt;<code><a href="constants.html#Struct_EntityID">constants.EntityID</a></code>&gt;</code> ids,
+                       <code><a href="context.html#Struct_Context">context.Context</a></code> context)
+    throws <code><a href="server_exception.html#Struct_ServerException">server_exception.ServerException</a></code>
+</pre>Retreive one or more entities by EntityID.
+The results vector will be in same order as ids parameter list
+<br/></div><div class="definition"><h4 id="Fn_Search_find">Function: Search.find</h4>
+<pre><code><a href="result.html#Struct_Result">result.Result</a></code> find(<code><a href="query.html#Struct_Query">query.Query</a></code> query,
+                   <code><a href="context.html#Struct_Context">context.Context</a></code> context)
+    throws <code><a href="server_exception.html#Struct_ServerException">server_exception.ServerException</a></code>
+</pre>Search for entities.
+Results ordering will be based on search scoring and ranking
+<br/></div></div></body></html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: selection</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: selection</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>selection</td><td></td>
+<td><a href="selection.html#Struct_CommonSelection">CommonSelection</a><br/>
+<a href="selection.html#Typedef_EagerLoadType">EagerLoadType</a><br/>
+<a href="selection.html#Enum_EagerLoadTypeE">EagerLoadTypeE</a><br/>
+<a href="selection.html#Struct_FindSelection">FindSelection</a><br/>
+<a href="selection.html#Struct_RetrieveSelection">RetrieveSelection</a><br/>
+<a href="selection.html#Typedef_SortBy">SortBy</a><br/>
+<a href="selection.html#Enum_SortByE">SortByE</a><br/>
+<a href="selection.html#Typedef_SortOrder">SortOrder</a><br/>
+<a href="selection.html#Enum_SortOrderE">SortOrderE</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_EagerLoadTypeE">Enumeration: EagerLoadTypeE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Flat</code></td><td><code>0</code></td></tr>
+<tr><td><code>PersonSerpWithMembersAt</code></td><td><code>1</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_SortOrderE">Enumeration: SortOrderE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Descending</code></td><td><code>0</code></td></tr>
+<tr><td><code>Ascending</code></td><td><code>1</code></td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_SortByE">Enumeration: SortByE</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>Relevance</code></td><td><code>0</code></td></tr>
+<tr><td><code>Distance</code></td><td><code>1</code></td></tr>
+<tr><td><code>Name</code></td><td><code>2</code></td></tr>
+</table></div>
+<hr/><h2 id="Typedefs">Type declarations</h2>
+<div class="definition"><h3 id="Typedef_EagerLoadType">Typedef: EagerLoadType</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_SortOrder">Typedef: SortOrder</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_SortBy">Typedef: SortBy</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_WeakEnum">constants.WeakEnum</a></code></p>
+</div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_CommonSelection">Struct: CommonSelection</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>eager_load_depth</td><td><code>i32</code></td><td>number of reference indirections starting from result entities to
+materialize in result dictionaries. Used only if eager_load_type
+is unset or set to Flat.
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>eager_load_type</td><td><code><a href="selection.html#Typedef_EagerLoadType">EagerLoadType</a></code></td><td>Define an eager load shape. If unset, defaults to Flat which
+uses eager_load_depth.
+</td><td>optional</td><td></td></tr>
+</table><br/>selection controls for pagination and result set limiting
+<br/></div><div class="definition"><h3 id="Struct_RetrieveSelection">Struct: RetrieveSelection</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>eager_load_depth</td><td><code>i32</code></td><td>number of reference indirections starting from result entities to
+materialize in result dictionaries. Used only if eager_load_type
+is unset or set to Flat.
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>eager_load_type</td><td><code><a href="selection.html#Enum_EagerLoadTypeE">EagerLoadTypeE</a></code></td><td>Define an eager load shape. If unset, defaults to Flat which
+uses eager_load_depth.
+</td><td>optional</td><td></td></tr>
+</table><br/>selection controls for pagination and result set limiting
+<br/></div><div class="definition"><h3 id="Struct_FindSelection">Struct: FindSelection</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>page_first</td><td><code>i32</code></td><td>0-base index of first result from result set for desired page
+</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>page_len</td><td><code>i32</code></td><td>number results to fill desired page
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>max_results</td><td><code>i32</code></td><td>maximum number of results to retrieve (default 100)
+</td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>sort_order</td><td><code><a href="selection.html#Typedef_SortOrder">SortOrder</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>sort_by</td><td><code><a href="selection.html#Typedef_SortBy">SortBy</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>10</td><td>eager_load_depth</td><td><code>i32</code></td><td>number of reference indirections starting from result entities to
+materialize in result dictionaries. Used only if eager_load_type
+is unset or set to Flat.
+</td><td>optional</td><td></td></tr>
+<tr><td>11</td><td>eager_load_type</td><td><code><a href="selection.html#Typedef_EagerLoadType">EagerLoadType</a></code></td><td>Define an eager load shape. If unset, defaults to Flat which
+uses eager_load_depth.
+</td><td>optional</td><td></td></tr>
+</table><br/>selection controls for pagination and result set limiting
+<br/></div></div></body></html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="WP PRO External API (Draft) : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>WP PRO External API (Draft)</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/whitepages/external-thrift-api">View on GitHub</a>
+
+          <h1 id="project_title">WP PRO External API (Draft)</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/whitepages/external-thrift-api/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/whitepages/external-thrift-api/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a name="introduction-and-overview" class="anchor" href="#introduction-and-overview"><span class="octicon octicon-link"></span></a>Introduction and Overview</h2>
+
+<p>WhitePages, Inc Pro API gives businesses the ability to easily integrate and leverage its industry leading People and Business search. The API is accessed via a RESTful interface using simple GET requests. The WhitePages.com API will provide JSON responses by default. This protocol is simple to use and accessible from any common web programming language on any machine with Internet access.  </p>
+
+<p>WhitePages has organized it's data around four major entity types;</p>
+
+<ul>
+<li>
+<a href="http://whitepages.github.io/external-thrift-api/gen-html/wrapped_phone.html">Phone</a>: A phone number, familiar to us all, eg 206-285-0429.  Phones have phone numbers (obviously), carriers, line types (mobile, landline, etc) and other characteristics.</li>
+<li>
+<a href="http://whitepages.github.io/external-thrift-api/gen-html/wrapped_person.html">Person</a>: A person, always with a name, eg Scott Sikora.  People have birth dates, genders (male or female), and other characteristics.</li>
+<li>
+<a href="http://whitepages.github.io/external-thrift-api/gen-html/wrapped_business.html">Business</a>: A business, with a name, eg WhitePages.  Businesses have start dates, categories (eg Pizza Shop) and other characterstics.</li>
+<li>
+<a href="http://whitepages.github.io/external-thrift-api/gen-html/wrapped_location.html">Location</a>: A physical location, eg 1301 5th Avenue.  Locations have latitude and longitude coordinates, addresses, types (house, apartment, etc) and other characteristics.</li>
+</ul><p>WhitePages provides two major API calls;  </p>
+
+<ul>
+<li>
+<a href="http://whitepages.github.io/external-thrift-api/gen-html/search_service.html">Find</a>: Using <a href="http://whitepages.github.io/external-thrift-api/gen-html/query.html">query parameters</a>, find one or more People, Phones, Locations or Businesses.</li>
+<li>
+<a href="http://whitepages.github.io/external-thrift-api/gen-html/search_service.html">Retrieve</a>: Given the ID of a Person, Phone, Location or Business, retrieve more information.</li>
+</ul><h3>
+<a name="the-whitepages-graph" class="anchor" href="#the-whitepages-graph"><span class="octicon octicon-link"></span></a>The WhitePages Graph</h3>
+
+<p>For information about the data graph model exposed by this API, see:</p>
+
+<ul>
+<li><a href="https://docs.google.com/a/whitepages.com/drawings/d/1MRwsoMD4WinksgbxHxgHlKLEfVRkAzqlCI6fQewGN5E/edit">An overview of the graph model and key terminology</a></li>
+<li><a href="https://docs.google.com/a/whitepages.com/drawings/d/1p1G7CV33cVUfdQFMhq1h42bAopOEgHLbIUChpfgtl8s/edit">Relationships between the four core entity types</a></li>
+<li><a href="https://docs.google.com/a/whitepages.com/drawings/d/19y5fY91Cj1O6CO8QjFBo2ysSW2EP9p8tkvby93ptIUg/edit">Reference showing members of each entity type</a></li>
+</ul><h4>
+<a name="using-find" class="anchor" href="#using-find"><span class="octicon octicon-link"></span></a>Using find()</h4>
+
+<p>Example usage:</p>
+
+<pre><code>query.result_type = :person
+query.what(:last_name =&gt; "smith")
+query.where(:unparsed_location =&gt; "seattle,wa")
+r = sal.find(query)
+</code></pre>
+
+<p>The find() method also takes other arguments. See <a href="http://whitepages.github.io/external-thrift-api/gen-html/query.html">query parameters</a> for details.</p>
+
+<p>The result of a find() call is an instance of SearchResult. See below.</p>
+
+<h4>
+<a name="using-retrieve" class="anchor" href="#using-retrieve"><span class="octicon octicon-link"></span></a>Using retrieve()</h4>
+
+<p>Example usage:</p>
+
+<pre><code>id = WP::Data::EntityID[:person, "UUID"]
+r = sal.retrieve(id)
+r = sal.retrieve([ id, id .. ])
+</code></pre>
+
+<h4>
+<a name="using-the-results-of-a-find-or-retrieve" class="anchor" href="#using-the-results-of-a-find-or-retrieve"><span class="octicon octicon-link"></span></a>Using the results of a find() or retrieve()</h4>
+
+<p>Both find() and retrieve() methods return the results in an instance of <a href="http://whitepages.github.io/external-thrift-api/gen-html/result.html#Struct_Result">Result</a> or return an <a href="http://whitepages.github.io/external-thrift-api/gen-html/server_exception.html#Struct_ServerException">ServerException</a> if any errors occur.</p>
+
+<h4>
+<a name="traversing-the-graph" class="anchor" href="#traversing-the-graph"><span class="octicon octicon-link"></span></a>Traversing the graph</h4>
+
+<p>From any entity, you can follow links to other entities. For example, if a <a href="http://whitepages.github.io/external-thrift-api/gen-html/result.html#Struct_Result">Result</a> contains <a href="http://whitepages.github.io/external-thrift-api/gen-html/wrapped_person.html">People</a> you can find the locations with which each person is associated with in the Locations field.</p>
+
+<h4>
+<a name="entity-relationship-navigation-and-results-fields" class="anchor" href="#entity-relationship-navigation-and-results-fields"><span class="octicon octicon-link"></span></a>Entity, Relationship, Navigation and Results fields</h4>
+
+<p>Each entity (such as a WP::SAL::Person instance) contains a set of per-entity methods,
+such as "names" for Person, "phone_number" for Phones, and so on.</p>
+
+<p>In addition, each entity can also include additional fields:</p>
+
+<ul>
+<li><p>Some fields depend on the link used to access the entity. These are
+called "Relationship fields", and are things like the period for
+which the link is valid.</p></li>
+<li><p>Some fields show how the entity was accessed by traversing the
+graph.  These are called "Navigation fields" and are things like the
+depth and parent entity.</p></li>
+<li><p>Some fields show search results information, such as score. These
+are only available on entities accessed directly from a
+SearchResults object.</p></li>
+</ul><h3>
+<a name="to-gen-html" class="anchor" href="#to-gen-html"><span class="octicon octicon-link"></span></a>To gen-html</h3>
+
+<p>ssikora@scosikm0:~/repo/external-thrift-api$ thrift -r -gen html thrift/wp-api-search</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">WP PRO External API (Draft) maintained by <a href="https://github.com/whitepages">whitepages</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

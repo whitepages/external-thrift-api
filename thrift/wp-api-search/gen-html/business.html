@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Thrift module: business</title></head><body>
+<div class="container-fluid">
+<h1>Thrift module: business</h1>
+<table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
+<tr>
+<td>business</td><td></td>
+<td><a href="business.html#Struct_Business">Business</a><br/>
+<a href="business.html#Typedef_BusinessAltID">BusinessAltID</a><br/>
+<a href="business.html#Struct_BusinessClaimInfo">BusinessClaimInfo</a><br/>
+<a href="business.html#Typedef_BusinessShortID">BusinessShortID</a><br/>
+<a href="business.html#Typedef_Category">Category</a><br/>
+<a href="business.html#Typedef_Chain">Chain</a><br/>
+<a href="business.html#Typedef_HoursOfOperation">HoursOfOperation</a><br/>
+<a href="business.html#Typedef_ProviderID">ProviderID</a><br/>
+<a href="business.html#Struct_Subdepartment">Subdepartment</a><br/>
+</td>
+<td></code></td>
+</tr></table>
+<hr/><h2 id="Typedefs">Type declarations</h2>
+<div class="definition"><h3 id="Typedef_BusinessShortID">Typedef: BusinessShortID</h3>
+<p><strong>Base type:</strong>&nbsp;<code>string</code></p>
+ALternative unique short key for a Business object.  (This is also known as the shortid or seoid.)
+<br/></div>
+<div class="definition"><h3 id="Typedef_BusinessAltID">Typedef: BusinessAltID</h3>
+<p><strong>Base type:</strong>&nbsp;<code>string</code></p>
+</div>
+<div class="definition"><h3 id="Typedef_HoursOfOperation">Typedef: HoursOfOperation</h3>
+<p><strong>Base type:</strong>&nbsp;<code>list&lt;<code>string</code>&gt;</code></p>
+</div>
+<div class="definition"><h3 id="Typedef_ProviderID">Typedef: ProviderID</h3>
+<p><strong>Base type:</strong>&nbsp;<code>string</code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Chain">Typedef: Chain</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_uuid">constants.uuid</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Category">Typedef: Category</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="constants.html#Typedef_uuid">constants.uuid</a></code></p>
+</div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_BusinessClaimInfo">Struct: BusinessClaimInfo</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>is_user_generated</td><td><code>bool</code></td><td>source of person info is online claim & edit capability; default: false
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>is_claimed</td><td><code>bool</code></td><td>claimed record, not third-party edit; default: false
+</td><td>required</td><td></td></tr>
+</table><br/>information about the online claim status of a business
+<br/></div><div class="definition"><h3 id="Struct_Subdepartment">Struct: Subdepartment</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>name</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>phones</td><td><code>list&lt;<code><a href="related_phone.html#Typedef_RelatedPhones">related_phone.RelatedPhones</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>hours_of_operation</td><td><code><a href="business.html#Typedef_HoursOfOperation">HoursOfOperation</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Business">Struct: Business</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>id</td><td><code><a href="constants.html#Typedef_BusinessID">constants.BusinessID</a></code></td><td>Durable primary key
+</td><td>required</td><td></td></tr>
+<tr><td>2</td><td>short_id</td><td><code><a href="business.html#Typedef_BusinessShortID">BusinessShortID</a></code></td><td>Alternate unique identifier
+</td><td>required</td><td></td></tr>
+<tr><td>3</td><td>alt_id</td><td><code><a href="business.html#Typedef_BusinessAltID">BusinessAltID</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>name</td><td><code>string</code></td><td>business name
+</td><td>required</td><td></td></tr>
+<tr><td>6</td><td>tagline</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>7</td><td>description</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>10</td><td>locations</td><td><code><a href="related_location.html#Typedef_RelatedLocations">related_location.RelatedLocations</a></code></td><td>Current and prior physical addresses for this entity
+</td><td>optional</td><td></td></tr>
+<tr><td>11</td><td>phones</td><td><code><a href="related_phone.html#Typedef_RelatedPhones">related_phone.RelatedPhones</a></code></td><td>Current and prior phone numbers for this entity
+</td><td>optional</td><td></td></tr>
+<tr><td>12</td><td>emails</td><td><code>list&lt;<code><a href="email.html#Struct_Email">email.Email</a></code>&gt;</code></td><td>List of email addresses for this listing
+</td><td>optional</td><td></td></tr>
+<tr><td>13</td><td>ims</td><td><code>list&lt;<code><a href="im.html#Struct_Im">im.Im</a></code>&gt;</code></td><td>List of IM addresses for this entity (currently not supported)
+</td><td>optional</td><td></td></tr>
+<tr><td>14</td><td>media</td><td><code>list&lt;<code><a href="media.html#Struct_Media">media.Media</a></code>&gt;</code></td><td>List of media for this legal entity
+</td><td>optional</td><td></td></tr>
+<tr><td>15</td><td>urls</td><td><code>list&lt;<code><a href="url.html#Struct_Url">url.Url</a></code>&gt;</code></td><td>List of URLs for this legal entity
+</td><td>optional</td><td></td></tr>
+<tr><td>16</td><td>social_links</td><td><code>list&lt;<code><a href="social_link.html#Struct_SocialLink">social_link.SocialLink</a></code>&gt;</code></td><td>List of Social Network links for this legal entity
+</td><td>optional</td><td></td></tr>
+<tr><td>30</td><td>is_user_generated</td><td><code>bool</code></td><td>source of person info is online claim & edit capability; default: false
+</td><td>required</td><td></td></tr>
+<tr><td>31</td><td>is_claimed</td><td><code>bool</code></td><td>claimed record, not third-party edit; default: false
+</td><td>required</td><td></td></tr>
+<tr><td>40</td><td>provider</td><td><code><a href="business.html#Typedef_ProviderID">ProviderID</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>50</td><td>hours_of_operation</td><td><code><a href="business.html#Typedef_HoursOfOperation">HoursOfOperation</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>51</td><td>payment_types</td><td><code>list&lt;<code>string</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>55</td><td>subdepartments</td><td><code>list&lt;<code><a href="business.html#Struct_Subdepartment">Subdepartment</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>56</td><td>specialties</td><td><code>list&lt;<code>string</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>57</td><td>chain</td><td><code><a href="business.html#Typedef_Chain">Chain</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>58</td><td>category</td><td><code><a href="business.html#Typedef_Category">Category</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>59</td><td>additional_provider_ids</td><td><code>list&lt;<code><a href="business.html#Typedef_ProviderID">ProviderID</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>60</td><td>enhanced_details_list</td><td><code>map&lt;<code><a href="business.html#Typedef_ProviderID">ProviderID</a></code>, <code>string</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>The listing object is the bucket that contains all of the data returned in
+the search results. Most members of the listing will be optional and will
+often be empty.
+<br/></div></div></body></html>
