@@ -36,6 +36,9 @@
 
 <p>WhitePages, Inc Pro API gives businesses the ability to easily integrate and leverage its industry leading People and Business search. The API is accessed via a RESTful interface using simple GET requests. The WhitePages.com API will provide JSON responses by default. This protocol is simple to use and accessible from any common web programming language on any machine with Internet access.  </p>
 
+<h3>
+<a name="the-whitepages-graph" class="anchor" href="#the-whitepages-graph"><span class="octicon octicon-link"></span></a>The WhitePages Graph</h3>
+
 <p>WhitePages has organized it's data around four major entity types;</p>
 
 <ul>
@@ -47,10 +50,7 @@
 <a href="http://whitepages.github.io/external-thrift-api/gen-html/wrapped_business.html">Business</a>: A business, with a name, eg WhitePages.  Businesses have start dates, categories (eg Pizza Shop) and other characterstics.</li>
 <li>
 <a href="http://whitepages.github.io/external-thrift-api/gen-html/wrapped_location.html">Location</a>: A physical location, eg 1301 5th Avenue.  Locations have latitude and longitude coordinates, addresses, types (house, apartment, etc) and other characteristics.</li>
-</ul><h3>
-<a name="the-whitepages-graph" class="anchor" href="#the-whitepages-graph"><span class="octicon octicon-link"></span></a>The WhitePages Graph</h3>
-
-<p>For information about the data graph model exposed by this API, see:</p>
+</ul><p>For information about the data graph model exposed by this API, see:</p>
 
 <ul>
 <li><a href="http://whitepages.github.io/external-thrift-api/images/WP--SAL%20Entities%20and%20Graph%20Overview.pdf">An overview of the graph model and key terminology</a></li>
@@ -119,7 +119,643 @@ depth and parent entity.</p></li>
 <li><p>Some fields show search results information, such as score. These
 are only available on entities accessed directly from a
 SearchResults object.</p></li>
-</ul>
+</ul><h2>
+<a name="appendix-a--json-result-format" class="anchor" href="#appendix-a--json-result-format"><span class="octicon octicon-link"></span></a>Appendix A:  JSON Result Format</h2>
+
+<h3>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h3>
+
+<p>Encapsulates the results of the query.</p>
+
+<h3>
+<a name="properties" class="anchor" href="#properties"><span class="octicon octicon-link"></span></a>Properties</h3>
+
+<table>
+<tr>
+<th>Key</th>
+<th>Value Format</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>results</td>
+<td>Array[EntityID]</td>
+<td>The array of query result entity IDs.</td>
+</tr>
+<tr>
+<td>dictionary</td>
+<td>Map[EntityIDs→Entity]</td>
+<td>The dictionary of primary objects found during the query.</td>
+</tr>
+<tr>
+<td>global_exceptions</td>
+<td>Array[Errors]</td>
+<td>An array of errors.</td>
+</tr>
+</table><h4>
+<a name="results" class="anchor" href="#results"><span class="octicon octicon-link"></span></a>Results</h4>
+
+<p>The Array of EntityIDs that make up the result of the query. These IDs can be
+looked-up in the <code>dictionary</code> to get the JSON serialization of the given entity.</p>
+
+<h4>
+<a name="dictionary" class="anchor" href="#dictionary"><span class="octicon octicon-link"></span></a>Dictionary</h4>
+
+<p>A Map of EntityIDs to Entity JSON.  Relevant objects found in the <code>results</code> Array,
+as well as the associated entities found in those results, are included in this
+map.</p>
+
+<h4>
+<a name="global-exceptions" class="anchor" href="#global-exceptions"><span class="octicon octicon-link"></span></a>Global Exceptions</h4>
+
+<p>An array of any warnings or errors found during this request.  Note that
+sometimes warnings or errors can arise even when results are found.</p>
+
+<h2>
+<a name="person" class="anchor" href="#person"><span class="octicon octicon-link"></span></a>Person</h2>
+
+<table>
+<tr>
+<th>Key</th>
+<th>Value Format</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>id</td>
+<td>EntityID</td>
+<td>The entity ID of this entity.</td>
+</tr>
+<tr>
+<td>names</td>
+<td>Array[Name]</td>
+<td>The array of known names for this person.</td>
+</tr>
+<tr>
+<td>birth_date</td>
+<td>Date</td>
+<td>The birthdate; check Age Range if blank.</td>
+</tr>
+<tr>
+<td>age_range</td>
+<td>AgeRange</td>
+<td>The age range presented as a domain value.</td>
+</tr>
+<tr>
+<td>death_date</td>
+<td>Date</td>
+<td>Date of death or null.</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>Gender</td>
+<td>Domain data for gender.</td>
+</tr>
+<tr>
+<td>related_locations</td>
+<td>Array[EntityRelationship]</td>
+<td>Locations associated with this person</td>
+</tr>
+<tr>
+<td>best_name</td>
+<td>Name Struct</td>
+<td>The best name from the array of names.</td>
+</tr>
+<tr>
+<td>best_location</td>
+<td>Entity ID</td>
+<td>The best location ID from the list of related locations.</td>
+</tr>
+<tr>
+<td>associated_people</td>
+<td>Array[EntityRelationship]</td>
+<td>List of people associated.</td>
+</tr>
+<tr>
+<td>phones</td>
+<td>Array[EntityRelationship]</td>
+<td>List of associated phones.</td>
+</tr>
+</table><h3>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h3>
+
+<div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|9c109eca-de36-4640-af66-32587d172285"</span><span class="p">,</span>
+  <span class="s2">"short_id"</span><span class="o">:</span> <span class="s2">"8xzwyz7"</span><span class="p">,</span>
+  <span class="s2">"names"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"first_name"</span><span class="o">:</span> <span class="s2">"Amelia"</span><span class="p">,</span> <span class="s2">"last_name"</span><span class="o">:</span> <span class="s2">"Pond"</span><span class="p">,</span> <span class="s2">"nicknames"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"Amy"</span><span class="p">]}</span>
+  <span class="p">],</span>
+  <span class="s2">"birth_date"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"age_range"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"death_date"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"gender"</span><span class="o">:</span> <span class="s2">"Male"</span><span class="p">,</span>
+  <span class="s2">"locations"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"valid_for"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"start"</span><span class="o">:</span> <span class="p">{</span> <span class="s2">"year"</span><span class="o">:</span> <span class="mi">2012</span><span class="p">,</span> <span class="s2">"month"</span><span class="o">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s2">"day"</span><span class="o">:</span> <span class="mi">8</span><span class="p">}},</span>
+      <span class="s2">"contact_type"</span><span class="o">:</span> <span class="s2">"home"</span><span class="p">,</span>
+      <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Location|826e579f-1f86-4b9f-8641-b097da161b0e"</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">"phones"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"best_name"</span><span class="o">:</span> <span class="s2">"Max Rink"</span><span class="p">,</span>
+  <span class="s2">"best_location"</span><span class="o">:</span> <span class="s2">"Location|826e579f-1f86-4b9f-8641-b097da161b0e"</span><span class="p">,</span>
+  <span class="s2">"associated_people"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|27a01647-4e71-4d7f-8d0d-2183f6ea3193"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|94f40255-d580-485d-906b-2b8ebcdfec9e"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|3be3ddba-29c2-487d-9a39-9c6422abeb26"</span><span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="phone" class="anchor" href="#phone"><span class="octicon octicon-link"></span></a>Phone</h2>
+
+<p>Encapsulates the properties of a phone number.</p>
+
+<table>
+<tr>
+<th>Key</th>
+<th>Value Format</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>id</td>
+<td>EntityID</td>
+<td>The entity ID of this entity.</td>
+</tr>
+<tr>
+<td>line_type</td>
+<td>Enumerated String</td>
+<td>Gives the type of phone line.</td>
+</tr>
+<tr>
+<td>belongs_to</td>
+<td>Array[EntityRelationship]</td>
+<td>Gives the EntityIDs for people and businesses that posess this phone number.</td>
+</tr>
+<tr>
+<td>associated_locations</td>
+<td>Array[EntityRelationship]</td>
+<td>Gives the EntityIDs for locations associated with this phone number.</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>String</td>
+<td>The phone number</td>
+</tr>
+<tr>
+<td>country_calling_code</td>
+<td>String</td>
+<td>Country calling code</td>
+</tr>
+<tr>
+<td>extension</td>
+<td>String or Null</td>
+<td>The phone extension, if it has one</td>
+</tr>
+<tr>
+<td>carrier</td>
+<td>String</td>
+<td>The telco carrier.</td>
+</tr>
+<tr>
+<td>do_not_call</td>
+<td>Boolean</td>
+<td>Phone number on the do-not-call list?</td>
+</tr>
+<tr>
+<td>repuatation</td>
+<td>Number</td>
+<td>The spam-score for this phone number</td>
+</tr>
+<tr>
+<td>best_location</td>
+<td>EntityID</td>
+<td>The EntityID of the best/preferred location from the associated loations</td>
+</tr>
+</table><h3>
+<a name="landline-type" class="anchor" href="#landline-type"><span class="octicon octicon-link"></span></a>Landline Type</h3>
+
+<p>The landline type will be one of</p>
+
+<ul>
+<li>landline</li>
+<li>mobile</li>
+<li>voicemail</li>
+<li>tollfree</li>
+<li>premium</li>
+<li>non_fixed_voip</li>
+<li>fixed_voip</li>
+<li>other</li>
+</ul><h3>
+<a name="example-1" class="anchor" href="#example-1"><span class="octicon octicon-link"></span></a>Example</h3>
+
+<div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Phone|599f6fef-a2e1-4b08-cfe3-bc7128b74bcc"</span><span class="p">,</span>
+  <span class="s2">"line_type"</span><span class="o">:</span> <span class="s2">"landline"</span><span class="p">,</span>
+  <span class="s2">"belongs_to"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span><span class="s2">"Person|870bb764-8665-4add-92dc-0c457ccdeb60"</span><span class="p">,</span> <span class="s2">"valid_for"</span><span class="o">:</span><span class="p">{</span><span class="s2">"start"</span><span class="o">:</span><span class="p">{</span><span class="s2">"year"</span><span class="o">:</span><span class="mi">2013</span><span class="p">,</span><span class="s2">"month"</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"day"</span><span class="o">:</span><span class="mi">4</span><span class="p">}}}</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span><span class="s2">"Person|8bb8216a-1fb7-4b40-987a-f1d0ed66cc7d"</span><span class="p">,</span> <span class="s2">"valid_for"</span><span class="o">:</span><span class="p">{</span><span class="s2">"start"</span><span class="o">:</span><span class="p">{</span><span class="s2">"year"</span><span class="o">:</span><span class="mi">2013</span><span class="p">,</span><span class="s2">"month"</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"day"</span><span class="o">:</span><span class="mi">4</span><span class="p">}}},</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span><span class="s2">"Person|d94b9784-fe18-4eb2-915d-92996c353987"</span><span class="p">,</span> <span class="s2">"valid_for"</span><span class="o">:</span><span class="p">{</span><span class="s2">"start"</span><span class="o">:</span><span class="p">{</span><span class="s2">"year"</span><span class="o">:</span><span class="mi">2013</span><span class="p">,</span><span class="s2">"month"</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">"day"</span><span class="o">:</span><span class="mi">4</span><span class="p">}}),</span>
+  <span class="p">],</span>
+  <span class="s2">"associated_locations"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"phone_number"</span><span class="o">:</span> <span class="s2">"7075552687"</span><span class="p">,</span>
+  <span class="s2">"display_phone"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"country_calling_code"</span><span class="o">:</span> <span class="s2">"1"</span><span class="p">,</span>
+  <span class="s2">"extension"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"is_tracking"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"carrier"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"do_not_call"</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">"reputation"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"best_location"</span><span class="o">:</span> <span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="location" class="anchor" href="#location"><span class="octicon octicon-link"></span></a>Location</h2>
+
+<table>
+<tr>
+<th>Key</th>
+<th>Value Format</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>id</td>
+<td>EntityID</td>
+<td>The entity ID of this entity.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>LocationType</td>
+<td>The type of this location.</td>
+</tr>
+<tr>
+<td>valid_for</td>
+<td>Period</td>
+<td>The period of validity.</td>
+</tr>
+<tr>
+<td>legal_entities_at</td>
+<td>Array[EntityRelationship]</td>
+<td>People and Businesses found at this location.</td>
+</tr>
+<tr>
+<td>is_valid</td>
+<td>Boolean</td>
+<td>Has the address been validated.</td>
+</tr>
+<tr>
+<td>validated_at</td>
+<td>Date or null</td>
+<td>Date of last validation, if on record.</td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>The city.</td>
+</tr>
+<tr>
+<td>postal_code</td>
+<td>String</td>
+<td>The postal code.</td>
+</tr>
+<tr>
+<td>zip4</td>
+<td>String</td>
+<td>The zip5 extension, if in US.</td>
+</tr>
+<tr>
+<td>state_code</td>
+<td>String</td>
+<td>The state/province code.</td>
+</tr>
+<tr>
+<td>country_code</td>
+<td>String</td>
+<td>The country code.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Complete street address.</td>
+</tr>
+<tr>
+<td>house</td>
+<td>String</td>
+<td>House number.</td>
+</tr>
+<tr>
+<td>street_name</td>
+<td>String The name of the street.</td>
+<td></td>
+</tr>
+<tr>
+<td>street_type</td>
+<td>String</td>
+<td>Street type (i.e. "Hwy", "Ave"</td>
+</tr>
+<tr>
+<td>pre_dir</td>
+<td>String</td>
+<td>Directional before a street name</td>
+</tr>
+<tr>
+<td>post_dir</td>
+<td>String</td>
+<td>Directional after a street name</td>
+</tr>
+<tr>
+<td>apt_number</td>
+<td>String</td>
+<td>Apartment number</td>
+</tr>
+<tr>
+<td>apt_type</td>
+<td>String</td>
+<td>Unit type name, such as "Suite".</td>
+</tr>
+<tr>
+<td>box_number</td>
+<td>String</td>
+<td>PO Box Number.</td>
+</tr>
+<tr>
+<td>standard_address_line1</td>
+<td>String</td>
+<td>The first line of the address.</td>
+</tr>
+<tr>
+<td>standard_address_line1</td>
+<td>String</td>
+<td>The second line of the address,</td>
+</tr>
+<tr>
+<td>standard_address_location</td>
+<td>String</td>
+<td>The third line of the address.</td>
+</tr>
+<tr>
+<td>is_receiving_mail</td>
+<td>Boolean</td>
+<td>Is the address receiving mail?</td>
+</tr>
+<tr>
+<td>is_deliverable</td>
+<td>Beoolean</td>
+<td>Can mail be delivered to this address?</td>
+</tr>
+<tr>
+<td>not_receiving_mail_reason</td>
+<td>NotReceivingMailReason</td>
+<td>If not receiving mail, what is the reason?</td>
+</tr>
+<tr>
+<td>address_usage</td>
+<td>AddressUsage</td>
+<td>Is the address residential or business?</td>
+</tr>
+<tr>
+<td>delivery_point</td>
+<td>DeliveryPoint</td>
+<td>What kind of delivery point type is this address?</td>
+</tr>
+<tr>
+<td>box_type</td>
+<td>BoxType</td>
+<td>What kind of box is this address, if applicable.</td>
+</tr>
+<tr>
+<td>address_type</td>
+<td>AddressType</td>
+<td>The type for this address.</td>
+</tr>
+<tr>
+<td>lat_long</td>
+<td>LatLong</td>
+<td>The lat/long of this address in decimal degrees.</td>
+</tr>
+<tr>
+<td>accuracy</td>
+<td>GeoAccuracy</td>
+<td>The accuracy of the lat/long given.</td>
+</tr>
+</table><h3>
+<a name="location-type" class="anchor" href="#location-type"><span class="octicon octicon-link"></span></a>Location Type</h3>
+
+<p>Location type is one of</p>
+
+<ul>
+<li>address</li>
+<li>state</li>
+<li>city</li>
+<li>county</li>
+<li>neighborhood</li>
+<li>postalcode</li>
+<li>country</li>
+<li>zip_plus_4</li>
+</ul><h3>
+<a name="address-type" class="anchor" href="#address-type"><span class="octicon octicon-link"></span></a>Address Type</h3>
+
+<ul>
+<li>firm</li>
+<li>general_delivery</li>
+<li>highrise</li>
+<li>p_o_box</li>
+<li>rural_route</li>
+<li>street</li>
+</ul><h3>
+<a name="not-receiving-mail-reason" class="anchor" href="#not-receiving-mail-reason"><span class="octicon octicon-link"></span></a>Not Receiving Mail Reason</h3>
+
+<ul>
+<li>vacant</li>
+<li>new_construction</li>
+<li>rural</li>
+</ul><h3>
+<a name="address-usage" class="anchor" href="#address-usage"><span class="octicon octicon-link"></span></a>Address Usage</h3>
+
+<ul>
+<li>residentail</li>
+<li>business</li>
+</ul><h3>
+<a name="delivery-point-type" class="anchor" href="#delivery-point-type"><span class="octicon octicon-link"></span></a>Delivery Point Type</h3>
+
+<ul>
+<li>commercial_mail_drop</li>
+<li>p_o_box_throback</li>
+<li>p_o_box</li>
+<li>multi_unit</li>
+<li>single_unit</li>
+</ul><h3>
+<a name="box-type" class="anchor" href="#box-type"><span class="octicon octicon-link"></span></a>Box Type</h3>
+
+<ul>
+<li>facility</li>
+<li>contest</li>
+<li>detached</li>
+<li>non_personnel_unit</li>
+<li>school</li>
+<li>remittance</li>
+<li>caller_service</li>
+</ul><h3>
+<a name="geo-accuracy" class="anchor" href="#geo-accuracy"><span class="octicon octicon-link"></span></a>Geo-Accuracy</h3>
+
+<ul>
+<li>rooftop</li>
+<li>street</li>
+<li>postal_code</li>
+<li>city</li>
+<li>state</li>
+<li>country</li>
+</ul><h3>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+<div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Location|b64589b0-e7af-416c-8d80-74652257ace4"</span><span class="p">,</span>
+  <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"address"</span><span class="p">,</span>
+  <span class="s2">"valid_for"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"start"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"year"</span><span class="o">:</span> <span class="mi">2012</span><span class="p">,</span> <span class="s2">"month"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"day"</span><span class="o">:</span> <span class="mi">29</span><span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"legal_entities_at"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|cb76a7ab-520e-4b9c-bff8-2d0fda0f24e8"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|8bf5c76d-186b-4563-97cc-4583a9fbfa07"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|9103c93f-2150-47d4-820c-32c3d8550006"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|9366e6aa-9f87-43e8-8cf4-8d104528616b"</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|147a99fc-04c5-4577-8e73-f2e4197ab599"</span><span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"valid_for"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"start"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"year"</span><span class="o">:</span> <span class="mi">2012</span><span class="p">,</span> <span class="s2">"month"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"day"</span><span class="o">:</span> <span class="mi">29</span><span class="p">}},</span>
+      <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|870bb764-8665-4add-92dc-0c457ccdeb60"</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">"is_valid"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"validated_at"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"city"</span><span class="o">:</span> <span class="s2">"Sebastopol"</span><span class="p">,</span>
+  <span class="s2">"postal_code"</span><span class="o">:</span> <span class="s2">"95472"</span><span class="p">,</span>
+  <span class="s2">"zip4"</span><span class="o">:</span> <span class="s2">"6027"</span><span class="p">,</span>
+  <span class="s2">"state_code"</span><span class="o">:</span> <span class="s2">"CA"</span><span class="p">,</span>
+  <span class="s2">"country_code"</span><span class="o">:</span> <span class="s2">"US"</span><span class="p">,</span>
+  <span class="s2">"time_zone"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"address"</span><span class="o">:</span> <span class="s2">"4084 Gravenstein Hwy S, Sebastopol, CA 95472-6027"</span><span class="p">,</span>
+  <span class="s2">"house"</span><span class="o">:</span> <span class="s2">"4084"</span><span class="p">,</span>
+  <span class="s2">"street_name"</span><span class="o">:</span> <span class="s2">"Gravenstein"</span><span class="p">,</span>
+  <span class="s2">"street_type"</span><span class="o">:</span> <span class="s2">"Hwy"</span><span class="p">,</span>
+  <span class="s2">"pre_dir"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"post_dir"</span><span class="o">:</span> <span class="s2">"S"</span><span class="p">,</span>
+  <span class="s2">"apt_number"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"apt_type"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"box_number"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"standard_address_line1"</span><span class="o">:</span> <span class="s2">"4084 Gravenstein Hwy S"</span><span class="p">,</span>
+  <span class="s2">"standard_address_line2"</span><span class="o">:</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="s2">"standard_address_location"</span><span class="o">:</span> <span class="s2">"Sebastopol, CA 95472-6027"</span><span class="p">,</span>
+  <span class="s2">"is_receiving_mail"</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">"not_receiving_mail_reason"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"usage"</span><span class="o">:</span> <span class="s2">"residential"</span><span class="p">,</span>
+  <span class="s2">"delivery_point"</span><span class="o">:</span> <span class="s2">"single_unit"</span><span class="p">,</span>
+  <span class="s2">"box_type"</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="s2">"address_type"</span><span class="o">:</span> <span class="s2">"street"</span><span class="p">,</span>
+  <span class="s2">"lat_long"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"latitude"</span><span class="o">:</span> <span class="mf">38.360523</span><span class="p">,</span> <span class="s2">"longitude"</span><span class="o">:</span> <span class="o">-</span><span class="mf">122.775069</span><span class="p">},</span>
+  <span class="s2">"accuracy"</span><span class="o">:</span> <span class="s2">"street"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="business" class="anchor" href="#business"><span class="octicon octicon-link"></span></a>Business</h2>
+
+<table>
+<tr>
+<th>Key</th>
+<th>Value Format</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>id</td>
+<td>EntityID</td>
+<td>The entity ID of this entity.</td>
+</tr>
+<tr>
+<td>phones</td>
+<td>Array[EntityRelationship]</td>
+<td>List of associated phones.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Business name.</td>
+</tr>
+<tr>
+<td>tagline</td>
+<td>String</td>
+<td>Optional business tagline.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Optional business description.</td>
+</tr>
+<tr>
+<td>related_locations</td>
+<td>Array[EntityRelationship]</td>
+<td>Locations associated with this person</td>
+</tr>
+<tr>
+<td>specialties</td>
+<td>Array[String]</td>
+<td>Business specialties.</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>UUID</td>
+<td>The businesss chain UUID, if in a chain.</td>
+</tr>
+</table><h2>
+<a name="entityid" class="anchor" href="#entityid"><span class="octicon octicon-link"></span></a>EntityID</h2>
+
+<p>EntityIDs are encoded as single strings of the form <code>"type|UUID"</code></p>
+
+<p>Valid types are:</p>
+
+<ul>
+<li><code>Person</code></li>
+<li><code>Phone</code></li>
+<li><code>Location</code></li>
+<li><code>Business</code></li>
+</ul><h3>
+<a name="examples-1" class="anchor" href="#examples-1"><span class="octicon octicon-link"></span></a>Examples</h3>
+
+<div class="highlight"><pre><span class="s2">"Location|11f66784-e436-4aa6-84c7-e53179c23ca8"</span><span class="p">,</span>
+<span class="s2">"Person|aca35f92-a04d-48cf-8cc7-a054e88d1293"</span>
+</pre></div>
+
+<h2>
+<a name="entity-relationship" class="anchor" href="#entity-relationship"><span class="octicon octicon-link"></span></a>Entity Relationship</h2>
+
+<p>Examples:</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"Person|03d2eacd-dc8e-4e23-9bb0-52194a3adae8"</span><span class="p">,</span>
+    <span class="s2">"valid_for"</span><span class="o">:</span> <span class="p">{</span><span class="s2">"start"</span><span class="o">:</span><span class="p">{</span><span class="s2">"year"</span><span class="o">:</span><span class="mi">2011</span><span class="p">,</span> <span class="s2">"month"</span><span class="o">:</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"day"</span><span class="o">:</span><span class="mi">27</span><span class="p">},</span>
+    <span class="s2">"contact_type"</span><span class="o">:</span> <span class="s2">"home"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="date" class="anchor" href="#date"><span class="octicon octicon-link"></span></a>Date</h2>
+
+<p>Examples:</p>
+
+<div class="highlight"><pre><span class="p">{</span><span class="s2">"year"</span><span class="o">:</span> <span class="mi">2011</span><span class="p">,</span> <span class="s2">"month"</span><span class="o">:</span><span class="mi">6</span><span class="p">,</span> <span class="s2">"day"</span><span class="o">:</span><span class="mi">27</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">"year"</span><span class="o">:</span> <span class="mi">2011</span><span class="p">,</span> <span class="s2">"month"</span><span class="o">:</span><span class="mi">6</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">"year"</span><span class="o">:</span> <span class="mi">2011</span><span class="p">},</span>
+</pre></div>
+
+<h2>
+<a name="name" class="anchor" href="#name"><span class="octicon octicon-link"></span></a>Name</h2>
+
+<p>Examples:</p>
+
+<div class="highlight"><pre><span class="p">{</span>   <span class="s2">"first_name"</span><span class="o">:</span> <span class="s2">"Amelia"</span><span class="p">,</span>
+    <span class="s2">"last_name"</span><span class="o">:</span> <span class="s2">"Pond"</span><span class="p">,</span>
+    <span class="s2">"nicknames"</span><span class="o">:</span> <span class="p">[</span><span class="s2">"Amelia"</span><span class="p">,</span> <span class="s2">"Amy"</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
       </section>
     </div>
 
