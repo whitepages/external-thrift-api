@@ -1,8 +1,5 @@
-external-thrift-api
-===================
-
-
 ## Introduction and Overview
+
 WhitePages, Inc Pro API gives businesses the ability to easily integrate and leverage its industry leading People and Business search. The API is accessed via a RESTful interface using simple GET requests. The WhitePages.com API will provide JSON responses by default. This protocol is simple to use and accessible from any common web programming language on any machine with Internet access.  
 
 WhitePages has organized it's data around four major entity types;
@@ -12,18 +9,20 @@ WhitePages has organized it's data around four major entity types;
 * [Business](http://whitepages.github.io/external-thrift-api/gen-html/wrapped_business.html): A business, with a name, eg WhitePages.  Businesses have start dates, categories (eg Pizza Shop) and other characterstics.
 * [Location](http://whitepages.github.io/external-thrift-api/gen-html/wrapped_location.html): A physical location, eg 1301 5th Avenue.  Locations have latitude and longitude coordinates, addresses, types (house, apartment, etc) and other characteristics.
 
-WhitePages provides two major API calls;  
-
-* [Find](http://whitepages.github.io/external-thrift-api/gen-html/search_service.html): Using [query parameters](http://whitepages.github.io/external-thrift-api/gen-html/query.html), find one or more People, Phones, Locations or Businesses.
-* [Retrieve](http://whitepages.github.io/external-thrift-api/gen-html/search_service.html): Given the ID of a Person, Phone, Location or Business, retrieve more information.
-
 ### The WhitePages Graph
 
 For information about the data graph model exposed by this API, see:
 
-* [An overview of the graph model and key terminology](https://docs.google.com/a/whitepages.com/drawings/d/1MRwsoMD4WinksgbxHxgHlKLEfVRkAzqlCI6fQewGN5E/edit)
-* [Relationships between the four core entity types](https://docs.google.com/a/whitepages.com/drawings/d/1p1G7CV33cVUfdQFMhq1h42bAopOEgHLbIUChpfgtl8s/edit)
-* [Reference showing members of each entity type](https://docs.google.com/a/whitepages.com/drawings/d/19y5fY91Cj1O6CO8QjFBo2ysSW2EP9p8tkvby93ptIUg/edit)
+* [An overview of the graph model and key terminology](http://whitepages.github.io/external-thrift-api/images/WP--SAL%20Entities%20and%20Graph%20Overview.pdf)
+* [Relationships between the four core entity types](http://whitepages.github.io/external-thrift-api/images/WP--SAL%20Entity%20Relationships.pdf)
+* [Reference showing members of each entity type](http://whitepages.github.io/external-thrift-api/images/WP--SAL%20Entity%20Members%20Reference.pdf)
+
+### The WhitePages PRO API
+
+WhitePages provides two major API calls;  
+
+* [Find](http://whitepages.github.io/external-thrift-api/gen-html/search_service.html): Using [query parameters](http://whitepages.github.io/external-thrift-api/gen-html/query.html), find one or more People, Phones, Locations or Businesses.
+* [Retrieve](http://whitepages.github.io/external-thrift-api/gen-html/search_service.html): Given the ID of a Person, Phone, Location or Business, retrieve more information.
 
 #### Using find()
 
@@ -77,9 +76,8 @@ In addition, each entity can also include additional fields:
   SearchResults object.
 
 
+<!-- To Generate HTML --> 
+<!-- ssikora$ thrift -r -gen html thrift/wp-api-search --> 
 
 
-### To gen-html
 
-
-ssikora@scosikm0:~/repo/external-thrift-api$ thrift -r -gen html thrift/wp-api-search
